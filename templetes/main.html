@@ -1,10 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <title>아기사진첩</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Jua', sans-serif;
+        }
+
+        .jumbotron {
+            padding-top: 5vh;
+            padding-bottom: 3vh;
+            margin: auto;
+            width : 80%;
+        }
+
+        .card-boxes {
+            display: flex;
+            justify-content: center;
+        }
+
+        .left {
+            margin: 60px 50px 300px 100px;
+            float: left;
+        }
+
+        .right {
+            margin: 50px 100px 300px 50px;
+            float: right;
+        }
+
+        .button {
+            text-align: right;
+        }
+
+    </style>
+
 </head>
+
 <body>
+<div class="jumbotron reduced-jumbotron">
+  <h1 class="display-4">아기사진첩</h1>
+  <p class="lead">소중한 아기의 사진을 모아서 공유해 보세요!</p>
+  <hr class="my-4">
+</div>
+<div class="card-boxes">
+    <div class="card left" style="width: 30vw;">
+        <img alt="Card image cap"
+             class="card-img-top"
+             src="https://static3.depositphotos.com/1000883/126/i/950/depositphotos_1262575-stock-photo-cover-page-for-baby-album.jpg">
+        <div class="card-body">
+            <h5 class="card-title">시작</h5>
+        </div>
+        <div class="card-body button">
+            <a class="card-link" href="#">미리보기</a>
+            <a class="card-link" href="#">제작하기</a>
+        </div>
+    </div>
+    <div class="card right" style="width: 30vw;">
+        <img alt="Card image cap"
+             class="card-img-top"
+             src="https://static3.depositphotos.com/1000883/120/i/950/depositphotos_1209068-stock-photo-framework-for-photo-or-congratulation.jpg">
+        <div class="card-body">
+            <h5 class="card-title">동행</h5>
+        </div>
+        <div class="card-body button">
+            <a class="card-link" href="#">미리보기</a>
+            <a class="card-link" href="#">제작하기</a>
+        </div>
+    </div>
+</div>
 
 </body>
+
 </html>
