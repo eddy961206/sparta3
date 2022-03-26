@@ -18,9 +18,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <title>제작페이지 test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+  <title>제작페이지</title>
 
     <style>
+      *{
+        font-family: 'Jua', sans-serif;
+      }
       .wrap{
         width: 500px;
         margin: auto;
@@ -36,7 +43,14 @@
       }
 
       .family-info {
-            width: 250px;
+        width: 250px;
+      }
+
+      .form-control{
+        width: 70px;
+      }
+      .Birthday{
+        padding-bottom: 15px;
       }
     </style>
 
@@ -85,6 +99,107 @@
         </div>
         <input type="text" class="form-control" placeholder="정보를 입력하세요" aria-label="Username"
                aria-describedby="basic-addon1">
+      </div>
+
+      <h5 style="font-weight: bold">자녀 탄생일</h5>
+      <div class="Birthday">
+      <select class="form-select form-control-sm">
+        <option>년도</option>
+        <option value="1">1980</option>
+        <option value="2">1981</option>
+        <option value="3">1982</option>
+        <option value="4">1983</option>
+        <option value="5">1984</option>
+        <option value="6">1985</option>
+        <option value="7">1986</option>
+        <option value="8">1987</option>
+        <option value="9">1988</option>
+        <option value="10">1989</option>
+        <option value="11">1990</option>
+        <option value="12">1991</option>
+        <option value="13">1992</option>
+        <option value="14">1993</option>
+        <option value="15">1994</option>
+        <option value="16">1995</option>
+        <option value="17">1996</option>
+        <option value="18">1997</option>
+        <option value="19">1998</option>
+        <option value="20">1999</option>
+        <option value="21">2000</option>
+        <option value="22">2001</option>
+        <option value="23">2002</option>
+        <option value="24">2003</option>
+        <option value="25">2004</option>
+        <option value="26">2005</option>
+        <option value="27">2006</option>
+        <option value="28">2007</option>
+        <option value="29">2008</option>
+        <option value="30">2009</option>
+        <option value="31">2010</option>
+        <option value="32">2011</option>
+        <option value="33">2012</option>
+        <option value="34">2013</option>
+        <option value="35">2014</option>
+        <option value="36">2015</option>
+        <option value="37">2016</option>
+        <option value="38">2017</option>
+        <option value="39">2018</option>
+        <option value="40">2019</option>
+        <option value="41">2020</option>
+        <option value="42">2021</option>
+        <option value="43">2022</option>
+      </select>
+      <select class="form-select form-control-sm">
+        <option>월</option>
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="3">03</option>
+        <option value="4">04</option>
+        <option value="5">05</option>
+        <option value="6">06</option>
+        <option value="7">07</option>
+        <option value="8">08</option>
+        <option value="9">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      <select class="form-select form-control-sm">
+        <option>일</option>
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="3">03</option>
+        <option value="4">04</option>
+        <option value="5">05</option>
+        <option value="6">06</option>
+        <option value="7">07</option>
+        <option value="8">08</option>
+        <option value="9">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+      </select>
+      </div>
+
       </div>
 
       <button onclick="familyinfo()" type="submit" class="btn btn-primary">주문하기</button>
