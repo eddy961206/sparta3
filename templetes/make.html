@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>제작페이지 test</title>
+
+    <style>
+      .wrap{
+        width: 500px;
+        margin: auto;
+      }
+
+      .baby-img {
+        width: 500px;
+        height: 300px;
+
+        background-image: url("http://newsimg.hankookilbo.com/2019/04/29/201904291390027161_3.jpg");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .family-info {
+            width: 250px;
+      }
+    </style>
+
+    <script>
+      function familyinfo() {
+        alert('주문이 완료되었습니다.')
+      }
+    </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="baby-img"></div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">사진</span>
+      </div>
+      <div class="custom-file">
+        <form action="..." method="post" enctype="multipart/form-data">
+          <input type="file" class="custom-file-input" id="inputGroupFile01">
+          <label class="custom-file-label" for="inputGroupFile01">사진을 첨부해주세요</label>
+        </form>
+      </div>
+    </div>
+
+    <div class="family-info">
+      <h5 style="font-weight: bold">가족 정보</h5>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">아버지</span>
+        </div>
+        <input type="text" class="form-control" placeholder="정보를 입력하세요" aria-label="Username"
+               aria-describedby="basic-addon1">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">어머니</span>
+        </div>
+        <input type="text" class="form-control" placeholder="정보를 입력하세요" aria-label="Username"
+               aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">자녀</span>
+        </div>
+        <input type="text" class="form-control" placeholder="정보를 입력하세요" aria-label="Username"
+               aria-describedby="basic-addon1">
+      </div>
+
+      <button onclick="familyinfo()" type="submit" class="btn btn-primary">주문하기</button>
+    </div>
+  </div>
+
+</body>
+</html>

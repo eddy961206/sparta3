@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en" class="wf-castoro-n4-active wf-active"
+      style="--primary-bg-color:#f4f1ee; --primary-color:#c28e79; --secondary-color:#d8b8aa; --footer-bg-color:rgb(234, 230, 230, 0.64); --font-size:16px; --account-width:290px; --notice-margin-lr:2rem; --calendar-margin-lr:2rem; --waytocome-margin-lr:2rem; --guestbook-margin-lr:2rem; --font-regular:RIDIBatang; --font-regular-spacing:-0.4px; --font-gothic:Pretendard-Regular; --font-gothic-spacing:-0.2px; --font-bold:RIDIBatang; --font-bold-weight:bold;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>♥우리 아기 사진첩</title>
+
+    <meta property="og:title" content="우리 아기 사진첩">
+    <meta property="og:site_name" content="아이 돌 사진첩">
+    <meta property="og:description" content="우리 아기 잘 크고 있어요">
+    <meta property="og:image" content="{{ url_for('static', filename='ogimage.jpg') }}">
+    <!--    <meta property="og:image"-->
+    <!--          content="https://s3.ap-northeast-2.amazonaws.com/mcard.fromtoday.co.kr/w/IHukz8/photos/IHukz8_mcard_2022-03-25_00a4ce7df0d94c55befb43d4a4168108_w800.jpg">-->
+    <meta property="og:type" content="website">
+
+    <style type="text/css">
+        .vue-dialog div {
+            box-sizing: border-box;
+        }
+
+        .vue-dialog .dialog-flex {
+            width: 100%;
+            height: 100%;
+        }
+
+        .vue-dialog .dialog-content {
+            flex: 1 0 auto;
+            width: 100%;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .vue-dialog .dialog-c-title {
+            font-weight: 600;
+            padding-bottom: 15px;
+        }
+
+        .vue-dialog .dialog-c-text {
+        }
+
+        .vue-dialog .vue-dialog-buttons {
+            display: flex;
+            flex: 0 1 auto;
+            width: 100%;
+            border-top: 1px solid #eee;
+        }
+
+        .vue-dialog .vue-dialog-buttons-none {
+            width: 100%;
+            padding-bottom: 15px;
+        }
+
+        .vue-dialog-button {
+            font-size: 12px !important;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            cursor: pointer;
+            box-sizing: border-box;
+            line-height: 40px;
+            height: 40px;
+            color: inherit;
+            font: inherit;
+            outline: none;
+        }
+
+        .vue-dialog-button:hover {
+            background: rgba(0, 0, 0, 0.01);
+        }
+
+        .vue-dialog-button:active {
+            background: rgba(0, 0, 0, 0.025);
+        }
+
+        .vue-dialog-button:not(:first-of-type) {
+            border-left: 1px solid #eee;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Castoro" media="all">
+    <style type="text/css">#app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #333
+    }
+
+    #app, html {
+        height: 100%
+    }
+
+    html {
+        font-size: var(--font-size)
+    }
+
+    @media (max-width: 375px) {
+        html {
+            font-size: calc(var(--font-size) * 375 / 400)
+        }
+    }
+
+    @media (max-width: 360px) {
+        html {
+            font-size: calc(var(--font-size) * 360 / 400)
+        }
+    }
+
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #313131
+    }
+
+    body.modal-open {
+        overflow: hidden
+    }
+
+    h1, h2 {
+        font-weight: 400
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 10px
+    }
+
+    a {
+        color: var(--primary-color)
+    }
+
+    br {
+        font-family: initial
+    }
+
+    img {
+        -webkit-touch-callout: none
+    }
+    </style>
+    <style type="text/css">
+
+        @font-face {
+            font-family: SunBatang-Light;
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/SunBatang-Light.woff") format("woff");
+            font-weight: 400;
+            font-style: normal
+        }
+
+        @font-face {
+            font-family: SunBatang-Medium;
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/SunBatang-Medium.woff") format("woff");
+            font-weight: 400;
+            font-style: normal
+        }
+
+        @font-face {
+            font-family: TmoneyRoundWindRegular;
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff") format("woff");
+            font-weight: 400;
+            font-style: normal
+        }
+
+        @font-face {
+            font-family: RIDIBatang;
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff") format("woff");
+            font-weight: 400;
+            font-style: normal
+        }
+
+        @font-face {
+            font-family: Pretendard-Regular;
+            src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+            font-weight: 400;
+            font-style: normal
+        }
+
+        .mcard-view {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            padding: 0;
+            margin: auto;
+            background: #fff;
+            line-height: 2rem;
+            font-family: var(--font-regular), serif;
+            letter-spacing: var(--font-regular-spacing)
+        }
+
+        /*.mcard-view > .inner {*/
+        /*    background: url(/mcard/1004/bg.jpg?8187f1b1f595acf5fdc8ff919dcb4141)*/
+        /*}*/
+
+        .m-title {
+            letter-spacing: .5px;
+            font-size: 1.2rem
+        }
+
+        .m-subtitle, .m-title {
+            color: var(--primary-color)
+        }
+
+        .m-subtitle {
+            letter-spacing: .18rem;
+            font-size: .5rem
+        }
+
+        .m-subtitle img {
+            height: 1.5rem
+        }
+
+        .gothic {
+            font-family: var(--font-gothic), BlinkMacSystemFont, Apple SD Gothic Neo, Helvetica Neue, Helvetica, Arial, Malgun Gothic, "\B9D1\C740   \ACE0\B515", Dotum, 돋움, sans-serif;
+            letter-spacing: var(--font-gothic-spacing)
+        }
+
+        .c-bold {
+            font-family: var(--font-bold);
+            font-weight: var(--font-bold-weight)
+        }
+
+        button {
+            font-family: var(--font-gothic)
+        }
+
+    </style>
+    <style type="text/css">.fade-in {
+        opacity: 0;
+        transition: all .8s ease-out;
+        transform: translateY(30px);
+        box-sizing: border-box
+    }
+    </style>
+    <style type="text/css">
+
+        .audio-player {
+            position: absolute;
+            top: 12px;
+            right: 20px
+        }
+
+        .audio-alert {
+            font-size: 12px;
+            line-height: 0
+        }
+
+        .audio-alert div {
+            display: inline-block;
+            vertical-align: middle
+        }
+
+        .audio-alert svg {
+            width: 16px;
+            height: 16px;
+            fill: #777;
+            cursor: pointer
+        }
+
+        .slide-fade-enter-active {
+            transition: all .8s ease
+        }
+
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1, .5, .8, 1)
+        }
+
+        .slide-fade-enter, .slide-fade-leave-to {
+            transform: translateY(-20px);
+            opacity: 0
+        }
+    </style>
+    <style type="text/css">.mcard-intro[data-v-9b6009a0] {
+        padding: 0 0 40px
+    }
+
+    .mcard-intro .title[data-v-9b6009a0] {
+        padding: 48px 0;
+        font-size: 1.3rem;
+        color: #564545
+    }
+
+    .mcard-intro .title .baby[data-v-9b6009a0] {
+        display: block;
+        text-align: center
+    }
+
+    .mcard-intro .title .papa[data-v-9b6009a0] {
+        display: inline-block;
+        text-align: right
+    }
+
+    .mcard-intro .title .and[data-v-9b6009a0] {
+        display: inline-block;
+        margin: 0 .3rem;
+        font-size: 1rem;
+        text-align: center
+    }
+
+    .mcard-intro .title .mama[data-v-9b6009a0] {
+        display: inline-block;
+        text-align: left
+    }
+
+    .mcard-intro .title .dash[data-v-9b6009a0] {
+        width: 1rem;
+        height: 1px;
+        border-bottom: 1px solid #debb9f;
+        line-height: 0;
+        content: "";
+        text-align: center;
+        margin: .5rem auto
+    }
+
+    .mcard-intro .title .date[data-v-9b6009a0] {
+        height: 3.75rem;
+        font-size: 1.6rem
+    }
+
+    .mcard-intro .title .date .month[data-v-9b6009a0] {
+        align-self: flex-start
+    }
+
+    .mcard-intro .title .date .divider[data-v-9b6009a0] {
+        text-align: center;
+        width: 12px
+    }
+
+    .divider2[data-v-9b6009a0] {
+        margin: 0 auto;
+        width: 1px;
+        height: 60px;
+        background-color: #424242;
+        transform: rotate(45deg)
+    }
+
+    .mcard-intro .title .date .day[data-v-9b6009a0] {
+        align-self: flex-end
+    }
+
+    .mcard-intro .date-place[data-v-9b6009a0] {
+        font-size: .8rem;
+        letter-spacing: -.4px;
+        line-height: 2rem;
+        text-shadow: -1px -1px 0 #fff
+    }
+
+    .mcard-intro .photo-wrap[data-v-9b6009a0] {
+        background: #fff
+    }
+
+    .mcard-intro .photo[data-v-9b6009a0] {
+        line-height: 0
+    }
+
+    .mcard-intro .photo img[data-v-9b6009a0] {
+        width: 100%
+    }
+    </style>
+    <style type="text/css">.intro-blend-wrap[data-v-4fe70a99] {
+        position: relative;
+        overflow: hidden;
+        line-height: 0;
+        background: #eee
+    }
+
+    .intro-blend-image[data-v-4fe70a99] {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        pointer-events: none
+    }
+
+    .intro-blend-video[data-v-4fe70a99] {
+        display: none;
+        position: absolute;
+        mix-blend-mode: screen;
+        left: 0;
+        top: 0;
+        width: 100%
+    }
+
+    @supports (display:grid) {
+        .intro-blend-video[data-v-4fe70a99] {
+            display: block
+        }
+    }
+    </style>
+    <style type="text/css">
+
+        .greetings-wrap {
+            margin: 1px 0;
+            padding: 40px 0
+        }
+
+        .greetings-wrap .subtitle {
+            letter-spacing: 5px;
+            font-size: .8rem;
+            color: var(--primary-color)
+        }
+
+        .greetings-wrap .title {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            letter-spacing: 1px
+        }
+
+        .greetings-wrap .text {
+            margin: 2rem 1rem 1.2rem;
+            font-size: .9rem
+        }
+
+        .greetings-wrap .image img {
+            display: block;
+            width: 100%;
+            margin: 3rem 0 0;
+            pointer-events: none
+        }
+
+        .members-wrap {
+            padding: 1.2rem 0;
+            border-left: 0;
+            border-right: 0;
+            letter-spacing: 1px;
+            background: hsla(19, 33%, 63%, .07)
+        }
+
+        .members-wrap .relation {
+            font-size: .8rem;
+            color: #8a857f
+        }
+
+        .members-wrap .relation > span:last-child {
+            display: inline-block;
+            min-width: 2rem;
+            text-align: center
+        }
+
+        .members-wrap .deceased {
+            display: inline-block;
+            width: 6px;
+            font-size: 10px;
+            font-family: san-serif
+        }
+
+        .phone-circle {
+            display: inline-block;
+            height: 1.5rem;
+            width: 1.5rem;
+            vertical-align: middle;
+            cursor: pointer;
+            text-align: center
+        }
+
+        .phone-circle svg {
+            width: 1.125rem;
+            height: 1.125rem;
+            margin-top: 3px;
+            fill: var(--primary-color)
+        }
+
+        .contact-wrap .subtitle {
+            padding: 10px;
+            border: 1px solid #eee
+        }
+
+        .contact-box {
+            margin: 1.2rem auto 0;
+            max-width: 260px;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            text-align: center;
+            font-size: .85rem;
+            cursor: pointer;
+            letter-spacing: 0
+        }
+    </style>
+    <style type="text/css">.gallery-wrap {
+        margin: 1px 0;
+        padding: 40px 0
+    }
+
+    .gallery-wrap .title {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        letter-spacing: 1px
+    }
+
+    .gallery-wrap .subtitle {
+        letter-spacing: 5px;
+        font-size: .5rem;
+        color: var(--primary-color)
+    }
+    </style>
+    <style type="text/css">
+
+        .gallery-container {
+            margin: 40px 0 0
+        }
+
+        .time {
+            display: block;
+            text-align: center
+        }
+
+    </style>
+    <style type="text/css">
+
+        .carousel-wrap {
+            margin: 0;
+            position: relative
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            width: 48px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center
+        }
+
+        .carousel-arrow svg {
+            z-index: 101;
+            cursor: pointer;
+            width: 1.3rem;
+            height: 1.3rem;
+            fill: hsla(0, 0%, 100%, .9);
+            filter: drop-shadow(0 0 4px rgba(0, 0, 0, .25));
+            margin: 0 auto
+        }
+
+        .carousel-arrow .arrow[direction=left] {
+            left: 10px
+        }
+
+        .carousel-arrow .arrow[direction=right] {
+            right: 10px
+        }
+
+        .carousel-card {
+            width: 100%
+        }
+
+        .carousel-card > div {
+            height: 100%;
+            display: flex;
+            align-items: center
+        }
+
+        .carousel-card > div > img {
+            width: 100%;
+            pointer-events: none
+        }
+
+        .carousel-card .image {
+            width: 100%;
+            height: 500px;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: contain
+        }
+
+        .dot-wrap {
+            margin: 20px auto 0;
+            text-align: center
+        }
+
+        .dot-indicator {
+            display: inline-block;
+            content: "";
+            margin: 3px;
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            background: #ccc
+        }
+
+        .dot-indicator[active=true] {
+            background: #e6a79d
+        }
+    </style>
+    <style type="text/css">.guestbook-wrap {
+        margin: 1px 0;
+        padding: 40px 0
+    }
+
+    .guestbook-wrap .m-title {
+        margin-bottom: 20px
+    }
+
+    .c-guestbook .item {
+        position: relative;
+        padding: .75rem 1rem;
+        text-align: left;
+        line-height: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        margin-bottom: 6px;
+        box-shadow: 1px 1px 2px rgb(0 0 0/5%)
+    }
+    </style>
+    <style type="text/css">
+
+        .c-guestbook {
+            margin: 0 var(--guestbook-margin-lr);
+            border-left: 0;
+            border-right: 0;
+            font-size: .85rem
+        }
+
+        .c-guestbook .comments > .writing {
+            display: inline-block;
+            width: 5.5rem;
+            padding: 8px 0
+        }
+
+        .c-guestbook .comments > .writing > button {
+            display: block;
+            width: 100%;
+            line-height: 1.8rem;
+            background: var(--secondary-color);
+            border: 0;
+            border-radius: 23px;
+            font-size: .85rem;
+            font-weight: 400;
+            color: #fff;
+            cursor: pointer;
+            border: 1px solid var(--secondary-color)
+        }
+
+        .c-guestbook .comments > .writing > button > svg {
+            width: .7rem;
+            height: .7rem;
+            fill: #fff
+        }
+
+        .c-guestbook .item.empty {
+            text-align: center;
+            color: #aaa;
+            padding: 40px 0;
+            font-size: .8rem
+        }
+
+        .c-guestbook .item.empty svg {
+            width: 24px;
+            height: 24px;
+            fill: #aaa;
+            display: block;
+            margin: 0 auto 10px
+        }
+
+        .c-guestbook .item .name {
+            font-weight: 700;
+            margin-bottom: .25rem
+        }
+
+        .c-guestbook .item .date {
+            color: #aaa;
+            margin-right: 4px;
+            font-size: 11px
+        }
+
+        .c-guestbook .item .text {
+            line-height: 1.25rem
+        }
+
+        .c-guestbook .item .close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1rem;
+            line-height: 0;
+            text-align: center;
+            cursor: pointer
+        }
+
+        .c-guestbook .item .close > .icon > svg {
+            width: 8px;
+            height: 8px;
+            fill: #aaa
+        }
+
+        .c-guestbook .pagination-wrap {
+            width: calc(100% - 6rem);
+            display: inline-block
+        }
+
+        .c-guestbook .pagination {
+            text-align: left
+        }
+
+        .c-guestbook .pagination .btn {
+            background: #fff;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center
+        }
+
+        .pagination-number {
+            color: var(--secondary-color)
+        }
+
+        .pagination-active {
+            color: var(--primary-color);
+            font-weight: 700;
+            z-index: 94
+        }
+
+        .pagination svg {
+            fill: var(--secondary-color)
+        }
+    </style>
+    <style type="text/css">.footer-wrap {
+        margin-top: 60px;
+        padding: 30px 0;
+        background: var(--footer-bg-color)
+    }
+
+    .kakao-wrap {
+        font-size: .8rem;
+        line-height: 24px
+    }
+
+    .kakao-wrap .btn-kakao {
+        width: 250px;
+        margin: 0 auto;
+        line-height: 2rem;
+        cursor: pointer
+    }
+
+    .kakao-wrap .btn-kakao:first-child {
+        margin: 0 auto
+    }
+
+    .kakao-wrap .left {
+        flex: 1;
+        text-align: left
+    }
+
+    .kakao-wrap .right {
+        flex: 1;
+        text-align: right
+    }
+
+    .kakao-wrap svg {
+        width: 18px;
+        height: 18px;
+        vertical-align: middle
+    }
+
+    </style>
+
+
+</head>
+
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false" style="touch-action: pan-y;">
+<div id="app">
+    <div class="mcard-view">
+        <div class="inner">
+            <div></div>
+            <div class="audio-player">
+                <audio id="bgm-player" loop="loop" autoplay="autoplay">
+                    <source src="https://mcard.fromtoday.co.kr/mcard/assets/bgm/cute_00.mp03">
+                </audio>
+                <div class="audio-alert">
+                    <div class="icon">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 480 480"
+                             xml:space="preserve"><path d="M278.944,17.577c-5.568-2.656-12.128-1.952-16.928,1.92L106.368,144.009H32c-17.632,0-32,14.368-32,32v128
+        c0,17.664,14.368,32,32,32h74.368l155.616,124.512c2.912,2.304,6.464,3.488,10.016,3.488c2.368,0,4.736-0.544,6.944-1.6
+        c5.536-2.656,9.056-8.256,9.056-14.4v-416C288,25.865,284.48,20.265,278.944,17.577z"></path>
+                            <path d="M368.992,126.857c-6.304-6.208-16.416-6.112-22.624,0.128c-6.208,6.304-6.144,16.416,0.128,22.656
+        C370.688,173.513,384,205.609,384,240.009s-13.312,66.496-37.504,90.368c-6.272,6.176-6.336,16.32-0.128,22.624
+        c3.136,3.168,7.264,4.736,11.36,4.736c4.064,0,8.128-1.536,11.264-4.64C399.328,323.241,416,283.049,416,240.009
+        S399.328,156.777,368.992,126.857z"></path>
+                            <path d="M414.144,81.769c-6.304-6.24-16.416-6.176-22.656,0.096c-6.208,6.272-6.144,16.416,0.096,22.624
+        C427.968,140.553,448,188.681,448,240.009s-20.032,99.424-56.416,135.488c-6.24,6.24-6.304,16.384-0.096,22.656
+        c3.168,3.136,7.264,4.704,11.36,4.704c4.064,0,8.16-1.536,11.296-4.64C456.64,356.137,480,299.945,480,240.009
+        S456.64,123.881,414.144,81.769z"></path>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g>
+                            <g></g></svg>
+                    </div>
+                </div>
+            </div>
+            <div data-v-9b6009a0="" class="mcard-intro">
+                <div data-v-9b6009a0="" class="title">
+                    <div data-v-9b6009a0="" class="baby">아기이름</div>
+                    <div data-v-9b6009a0="" class="papa">아빠이름</div>
+                    <div data-v-9b6009a0="" class="and">&amp;</div>
+                    <div data-v-9b6009a0="" class="mama">엄마이름</div>
+                    <div data-v-9b6009a0="" class="date-place">2021년 4월 18일 12시34분</div>
+                </div>
+                <div data-v-9b6009a0="" class="photo-wrap">
+                    <div data-v-4fe70a99="" data-v-9b6009a0="" class="intro-blend-wrap photo">
+                        <img data-v-4fe70a99=""
+                             src="${메인사진1}"
+                             width="1280"
+                             height="853"
+                             class="intro-blend-image">
+                        <video data-v-4fe70a99="" id="intro-player" autoplay="autoplay" loop="loop" playsinline=""
+                               muted="muted" class="intro-blend-video" style="opacity: 1;">
+                            <source data-v-4fe70a99="" src="https://mcard.fromtoday.co.kr/mcard/assets/flower_00.mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="greetings-wrap">
+
+                    <div class="m-title fade-in" style="opacity: 1; transform: translate(0px, 0px);">
+                        <div class="greetings-title">
+                            저희 아기의 성장과정을 소개해드립니다.
+                        </div>
+                    </div>
+
+                    <div class="text fade-in" style="opacity: 1; transform: translate(0px, 0px);">
+                        <div>우리 부부의 새로운 가족이 된<br>
+                            귀여운 아기의 성장을 보여드리고자 합니다.<br>
+                            소중한 우리 아기의 앞날을<br>
+                            따뜻한 사랑으로 축복해 주십시오.
+                        </div>
+                    </div>
+
+                    <div class="image fade-in" style="opacity: 1; transform: translate(0px, 0px);">
+                        <img src="${메인사진2}">
+                    </div>
+
+                    <div class="members-wrap fade-in" style="opacity: 1; transform: translate(0px, 0px);">
+                        <div>
+                            아빠이름 <span>·</span> 엄마이름
+                            <span class="relation"><span>의</span> <span>아기</span></span>
+                            <span>아기이름</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="gallery-wrap">
+                        <div class="m-title fade-in" style="opacity: 1; transform: translate(0px, 0px);"> 성장일기</div>
+                        <div>
+                            시기별 일자
+                        </div>
+                        <div class="gallery-container fade-in" style="opacity: 1; transform: translate(0px, 0px);">
+                            <div>
+                                <div class="carousel-wrap" style="">
+                                    <div class="carousel-arrow" style="left: 0px;">
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 55.753 55.753" xml:space="preserve"><g><path d="M12.745,23.915c0.283-0.282,0.59-0.52,0.913-0.727L35.266,1.581c2.108-2.107,5.528-2.108,7.637,0.001
+            c2.109,2.108,2.109,5.527,0,7.637L24.294,27.828l18.705,18.706c2.109,2.108,2.109,5.526,0,7.637
+            c-1.055,1.056-2.438,1.582-3.818,1.582s-2.764-0.526-3.818-1.582L13.658,32.464c-0.323-0.207-0.632-0.445-0.913-0.727
+            c-1.078-1.078-1.598-2.498-1.572-3.911C11.147,26.413,11.667,24.994,12.745,23.915z"></path></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g></svg>
+                                    </div>
+                                    <div class="carousel-arrow" style="right: 0px;">
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 55.752 55.752" xml:space="preserve"><g><path d="M43.006,23.916c-0.28-0.282-0.59-0.52-0.912-0.727L20.485,1.581c-2.109-2.107-5.527-2.108-7.637,0.001
+            c-2.109,2.108-2.109,5.527,0,7.637l18.611,18.609L12.754,46.535c-2.11,2.107-2.11,5.527,0,7.637c1.055,1.053,2.436,1.58,3.817,1.58
+            s2.765-0.527,3.817-1.582l21.706-21.703c0.322-0.207,0.631-0.444,0.912-0.727c1.08-1.08,1.598-2.498,1.574-3.912
+            C44.605,26.413,44.086,24.993,43.006,23.916z"></path></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g>
+                                            <g></g></svg>
+                                    </div>
+                                    <div>
+                                        <div class="eg-flick-viewport"
+                                             style="position: relative; z-index: 100; overflow: hidden; min-height: 100%; width: 100%; touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-drag: none; height: 279px;">
+                                            <div class="eg-flick-camera"
+                                                 style="width: 100%; height: 100%; will-change: transform; transform: translate3d(0px, 0px, 0px);">
+                                                <div class="carousel-card eg-flick-panel"
+                                                     style="height: 279px; background: rgba(0, 0, 0, 0); left: 0px; position: absolute;">
+                                                    <div>
+                                                        <img src="${업로드된 아기사진들}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dot-wrap">
+                                    <div class="dot-indicator"></div>
+                                    <div class="dot-indicator"></div>
+                                    <div class="dot-indicator" active="true"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="guestbook-wrap">
+                        <div class="m-title fade-in" style="opacity: 1; transform: translate(0px, 0px);">
+                            방명록
+                        </div>
+                        <div class="c-guestbook gothic">
+                            <div class="comments fade-in" style="opacity: 1; transform: translate(0px, 0px);">
+                                <div class="item empty">
+                                    <svg height="436pt" viewBox="-6 0 436 436" width="436pt"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="m405.269531 95.183594c-15.378906-15.332032-38.886719-19.011719-58.214843-9.109375v-36.074219c-.03125-27.601562-22.398438-49.96875-50-50h-247.054688c-27.601562.03125-49.96875 22.398438-50 50v336c.03125 27.601562 22.398438 49.96875 50 50h247.054688c27.601562-.03125 49.96875-22.398438 50-50v-153.125l62.601562-62.601562c19.527344-19.527344 19.527344-51.183594 0-70.710938zm-220.289062 187.9375 36.425781 36.761718-49.578125 13.152344zm55.722656 27.820312-46.8125-47.242187 135.117187-134.730469 46.835938 46.832031zm86.351563 75.058594c-.019532 16.5625-13.4375 29.980469-30 30h-247.054688c-16.5625-.019531-29.980469-13.4375-30-30v-336c.019531-16.5625 13.4375-29.980469 30-30h247.054688c16.5625.019531 29.984374 13.4375 30 30v52.664062l-154.34375 153.90625c-1.257813 1.253907-2.160157 2.820313-2.609376 4.535157l-21.992187 83.457031c-.90625 3.441406.085937 7.105469 2.605469 9.625 2.519531 2.515625 6.183594 3.5 9.628906 2.585938l82.890625-21.992188c1.703125-.449219 3.257813-1.34375 4.507813-2.59375l79.3125-79.3125zm68.457031-229.867188-5.527344 5.527344-46.816406-46.816406 5.574219-5.558594c11.730468-11.65625 30.675781-11.636718 42.386718.039063l4.382813 4.382812c11.699219 11.722657 11.695312 30.703125 0 42.425781zm0 0"></path>
+                                    </svg>
+                                    첫 번째 축하 글을 남겨주세요
+                                </div>
+                                <div class="pagination-wrap"><!----></div>
+                                <div class="writing">
+                                    <button>
+                                        작성하기
+                                    </button>
+                                </div>
+                            </div> <!----></div>
+                    </div>
+                </div>
+                <div class="footer-wrap">
+                    <div class="kakao-wrap">
+                        <div class="btn-kakao">
+                            <svg id="Bold" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24"
+                                 width="512"
+                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                <path d="m9.462 9.306-.692 1.951h1.383z"></path>
+                                <path d="m12 1c-6.627 0-12 4.208-12 9.399 0 3.356 2.246 6.301 5.625 7.963-1.299 4.45-1.333 4.47-1.113 4.599.276.161.634-.005 5.357-3.311.692.097 1.404.148 2.131.148 6.627 0 12-4.208 12-9.399s-5.373-9.399-12-9.399zm-5.942 12.023c0 .362-.311.657-.692.657s-.692-.295-.692-.657v-4.086h-1.08c-.375 0-.679-.302-.679-.673s.303-.674.678-.674h3.545c.375 0 .679.302.679.673s-.305.674-.679.674h-1.08zm5.378.648c-.72 0-.587-.565-.919-1.195h-2.111c-.329.625-.2 1.195-.919 1.195-.693.001-.815-.421-.604-1.071l1.656-4.33c.117-.33.471-.669.922-.679.452.01.807.349.923.679 1.093 3.39 2.654 5.402 1.052 5.401zm3.939-.092h-2.221c-1.159 0-.454-1.565-.663-5.301 0-.379.317-.688.707-.688s.707.308.707.688v4.04h1.471c.366 0 .663.283.663.63-.001.348-.298.631-.664.631zm5.419-.518c-.025.181-.122.344-.269.454-.955.721-1.661-1.381-2.593-2.271l-.24.239v1.5c0 .38-.31.688-.693.688-.382 0-.692-.308-.692-.688v-4.705c0-.379.31-.688.692-.688s.692.308.692.688v1.478c1.277-.958 1.985-2.67 2.792-1.869.792.786-.848 1.474-1.527 2.422 1.604 2.212 1.909 2.267 1.838 2.752z"></path>
+                            </svg>
+                            <span style="display: inline-block; width: 8.2rem; margin-left: 6px;">카카오톡으로 공유하기</span>
+                        </div>
+                        <div class="btn-kakao">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                      d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                                      clip-rule="evenodd"></path>
+                            </svg>
+                            <span style="display: inline-block; width: 8.2rem; margin-left: 6px;">청첩장 주소 복사하기</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
