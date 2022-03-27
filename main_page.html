@@ -22,14 +22,6 @@
 
     <title>아기사진첩</title>
 
-    <meta content="우리 아기 사진첩" property="og:title">
-    <meta content="아이 돌 사진첩" property="og:site_name">
-    <meta content="우리 아기 잘 크고 있어요" property="og:description">
-    <meta content="{{ url_for('static', filename='ogimage.jpg') }}" property="og:image">
-    <meta content="https://s3.ap-northeast-2.amazonaws.com/mcard.fromtoday.co.kr/w/IHukz8/photos/IHukz8_mcard_2022-03-25_00a4ce7df0d94c55befb43d4a4168108_w800.jpg"
-          property="og:image">
-    <meta content="website" property="og:type">
-
 
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
@@ -42,15 +34,23 @@
             padding-top: 5vh;
             padding-bottom: 3vh;
             margin: auto;
-            width: 80%;
+            width : 80%;
         }
 
         .card-boxes {
             display: flex;
             justify-content: center;
-            margin: 50px 100px 300px 50px;
         }
 
+        .left {
+            margin: 60px 50px 300px 100px;
+            float: left;
+        }
+
+        .right {
+            margin: 50px 100px 300px 50px;
+            float: right;
+        }
 
         .button {
             text-align: right;
@@ -62,11 +62,23 @@
 
 <body>
 <div class="jumbotron reduced-jumbotron">
-    <h1 class="display-4">아기사진첩</h1>
-    <p class="lead">소중한 아기의 사진을 모아서 공유해 보세요!!</p>
-    <hr class="my-4">
+  <h1 class="display-4">아기사진첩</h1>
+  <p class="lead">소중한 아기의 사진을 모아서 공유해 보세요!!</p>
+  <hr class="my-4">
 </div>
 <div class="card-boxes">
+    <div class="card left" style="width: 30vw;">
+        <img alt="Card image cap"
+             class="card-img-top"
+             src="https://static3.depositphotos.com/1000883/126/i/950/depositphotos_1262575-stock-photo-cover-page-for-baby-album.jpg">
+        <div class="card-body">
+            <h5 class="card-title">시작</h5>
+        </div>
+        <div class="card-body button">
+            <a class="card-link" href="#">미리보기</a>
+            <a class="card-link" href="#">제작하기</a>
+        </div>
+    </div>
     <div class="card right" style="width: 30vw;">
         <img alt="Card image cap"
              class="card-img-top"
@@ -75,8 +87,8 @@
             <h5 class="card-title">동행</h5>
         </div>
         <div class="card-body button">
-            <a class="card-link" href="#">예시</a>
-            <a class="card-link" href="make.html">제작하기</a>
+            <a class="card-link" href="#">미리보기</a>
+            <a class="card-link" href="#">제작하기</a>
         </div>
     </div>
 </div>
