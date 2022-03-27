@@ -31,38 +31,63 @@
       *{
         font-family: 'Jua', sans-serif;
       }
-      .wrap{
-        width: 500px;
-        padding-top: 100px;
-        margin: auto;
+      .backcolor {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        position: relative;
+        z-index: 1;
       }
 
-      .baby-img {
+      .backcolor::after {
+        width: 100%;
+        height: 100%;
+        content: "";
+        background: url("https://cdn.pixabay.com/photo/2020/10/14/16/14/space-5654794_960_720.png");
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.8;
+      }
+      .wrap{
+        width: 1000px;
+        padding-top: 50px;
+        margin: auto;
+        background-color: #f4eae5;
+        border: 3px solid #eeb8ba;
+      }
+      .wrap2{
         width: 500px;
-        height: 300px;
-
-        background-image: url("http://newsimg.hankookilbo.com/2019/04/29/201904291390027161_3.jpg");
-        background-position: center;
-        background-size: cover;
+        padding-top: 30px;
+        margin: auto;
       }
 
       .family-info {
         width: 275px;
         margin-bottom: 20px;
       }
-
-      .mt-n1 {
-        margin-left: -0.7rem !important;
+      .birthday{
+        width: 300px;
+        margin-bottom: 20px;
       }
-      .mt-n2 {
-        margin-right: -0.7rem !important;
+
+      .baby-img {
+        width: 500px;
+        height: 300px;
+        margin-bottom: 20px;
+
+        background-image: url("https://cdn.pixabay.com/photo/2017/11/23/07/47/baby-2972221_960_720.jpg");
+        background-position: center;
+        background-size: cover;
       }
 
       .savebtn{
         margin:auto;
         display: block;
-
       }
+
+
 
     </style>
 
@@ -90,201 +115,199 @@
     </script>
 </head>
 <body>
-  <div class="wrap">
-    <div class="family-info">
-      <h5 style="font-weight: bold">이름을 적어주세요</h5>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">아기</span>
+  <div class="backcolor">
+    <div class="wrap">
+      <h1>우리 아이의 사진첩을 만들어보아요</h1>
+      <div class="wrap2">
+        <div class="family-info container">
+          <h5 style="font-weight: bold">이름을 적어주세요</h5>
+          <div class="input-group mb-3">
+            <span class="input-group-text bg-info">아기</span>
+            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text bg-info">엄마</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text bg-info">아빠</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
         </div>
-        <input type="text" class="form-control" placeholder="" aria-label="Username"
-               aria-describedby="basic-addon1">
+        <div class="birthday container">
+          <h5 style="font-weight: bold">아기 탄생일</h5>
+          <div class="row">
+            <div class="col">
+              <select class="form-select">
+                <option>년도</option>
+                <option value="1">1980</option>
+                <option value="2">1981</option>
+                <option value="3">1982</option>
+                <option value="4">1983</option>
+                <option value="5">1984</option>
+                <option value="6">1985</option>
+                <option value="7">1986</option>
+                <option value="8">1987</option>
+                <option value="9">1988</option>
+                <option value="10">1989</option>
+                <option value="11">1990</option>
+                <option value="12">1991</option>
+                <option value="13">1992</option>
+                <option value="14">1993</option>
+                <option value="15">1994</option>
+                <option value="16">1995</option>
+                <option value="17">1996</option>
+                <option value="18">1997</option>
+                <option value="19">1998</option>
+                <option value="20">1999</option>
+                <option value="21">2000</option>
+                <option value="22">2001</option>
+                <option value="23">2002</option>
+                <option value="24">2003</option>
+                <option value="25">2004</option>
+                <option value="26">2005</option>
+                <option value="27">2006</option>
+                <option value="28">2007</option>
+                <option value="29">2008</option>
+                <option value="30">2009</option>
+                <option value="31">2010</option>
+                <option value="32">2011</option>
+                <option value="33">2012</option>
+                <option value="34">2013</option>
+                <option value="35">2014</option>
+                <option value="36">2015</option>
+                <option value="37">2016</option>
+                <option value="38">2017</option>
+                <option value="39">2018</option>
+                <option value="40">2019</option>
+                <option value="41">2020</option>
+                <option value="42">2021</option>
+                <option value="43">2022</option>
+              </select>
+            </div>
+            <div class="col">
+              <select class="form-select">
+                <option>월</option>
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+            <div class="col">
+              <select class="form-select">
+                <option>일</option>
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <h5 style="font-weight: bold">사진을 넣어주세요</h5>
+        <div class="baby-img"></div>
+
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-25">탄생일</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-25">50일</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-25">100일</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-50">4개월</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-50">5개월</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-50">6개월</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-50">7개월</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-50">8개월</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-50">9개월</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-75">10개월</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-75">11개월</label>
+          <input type="file" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <label class="input-group-text bg-primary bg-opacity-75">12개월</label>
+          <input type="file" class="form-control">
+        </div>
+
+        <!-- Button -->
+        <button type="button" class="btn btn-primary savebtn" onclick="save()">
+          저장하기
+        </button>
+
+
       </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">엄마</span>
-        </div>
-        <input type="text" class="form-control" placeholder="" aria-label="Username"
-               aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">아빠</span>
-        </div>
-        <input type="text" class="form-control" placeholder="" aria-label="Username"
-               aria-describedby="basic-addon1">
-      </div>
-
-      <h5 style="font-weight: bold">아기 탄생일</h5>
-      <div class="row">
-        <div class="col mt-n2">
-          <select class="form-select">
-            <option>년도</option>
-            <option value="1">1980</option>
-            <option value="2">1981</option>
-            <option value="3">1982</option>
-            <option value="4">1983</option>
-            <option value="5">1984</option>
-            <option value="6">1985</option>
-            <option value="7">1986</option>
-            <option value="8">1987</option>
-            <option value="9">1988</option>
-            <option value="10">1989</option>
-            <option value="11">1990</option>
-            <option value="12">1991</option>
-            <option value="13">1992</option>
-            <option value="14">1993</option>
-            <option value="15">1994</option>
-            <option value="16">1995</option>
-            <option value="17">1996</option>
-            <option value="18">1997</option>
-            <option value="19">1998</option>
-            <option value="20">1999</option>
-            <option value="21">2000</option>
-            <option value="22">2001</option>
-            <option value="23">2002</option>
-            <option value="24">2003</option>
-            <option value="25">2004</option>
-            <option value="26">2005</option>
-            <option value="27">2006</option>
-            <option value="28">2007</option>
-            <option value="29">2008</option>
-            <option value="30">2009</option>
-            <option value="31">2010</option>
-            <option value="32">2011</option>
-            <option value="33">2012</option>
-            <option value="34">2013</option>
-            <option value="35">2014</option>
-            <option value="36">2015</option>
-            <option value="37">2016</option>
-            <option value="38">2017</option>
-            <option value="39">2018</option>
-            <option value="40">2019</option>
-            <option value="41">2020</option>
-            <option value="42">2021</option>
-            <option value="43">2022</option>
-          </select>
-        </div>
-        <div class="col mt-n1 mt-n2">
-          <select class="form-select">
-            <option>월</option>
-            <option value="1">01</option>
-            <option value="2">02</option>
-            <option value="3">03</option>
-            <option value="4">04</option>
-            <option value="5">05</option>
-            <option value="6">06</option>
-            <option value="7">07</option>
-            <option value="8">08</option>
-            <option value="9">09</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-        </div>
-        <div class="col mt-n1">
-          <select class="form-select">
-            <option>일</option>
-            <option value="1">01</option>
-            <option value="2">02</option>
-            <option value="3">03</option>
-            <option value="4">04</option>
-            <option value="5">05</option>
-            <option value="6">06</option>
-            <option value="7">07</option>
-            <option value="8">08</option>
-            <option value="9">09</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-            <option value="26">26</option>
-            <option value="27">27</option>
-            <option value="28">28</option>
-            <option value="29">29</option>
-            <option value="30">30</option>
-            <option value="31">31</option>
-          </select>
-        </div>
-      </div>
-
-      </div>
-    <h5 style="font-weight: bold">사진을 넣어주세요</h5>
-    <div class="baby-img"></div>
-
-    <div class="input-group mb-3">
-      <label class="input-group-text">탄생일</label>
-      <input type="file" class="form-control">
     </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">50일</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">100일</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">4개월</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">5개월</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">6개월</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">7개월</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">8개월</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">9개월</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">10개월</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">11개월</label>
-      <input type="file" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text">12개월</label>
-      <input type="file" class="form-control">
-    </div>
-
-    <!-- Button -->
-    <button type="button" class="btn btn-primary savebtn" onclick="save()">
-      저장하기
-    </button>
-
-
-
-
-
-
   </div>
-
 
 </body>
 </html>
