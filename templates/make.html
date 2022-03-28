@@ -68,7 +68,7 @@
         margin-bottom: 20px;
       }
       .birthday{
-        width: 300px;
+        width: 325px;
         margin-bottom: 20px;
       }
 
@@ -92,7 +92,38 @@
     </style>
 
     <script>
-      function save() {
+        function save() {
+          let babyname = $('#babyname').val()
+          let mothername = $('#mothername').val()
+          let fathername = $('#fathername').val()
+
+          let birthyear = $('#birthyear').val()
+          let birthmonth = $('#birthmonth').val()
+          let birthday = $('#birthday').val()
+
+
+          $.ajax({
+            type: "POST",
+            url: "/review",
+            processData: false,
+            contentType: false,
+            data: {
+              baby_name: babyname,
+              mother_name: mothername,
+              father_name: fathername,
+              birth_year: birthyear,
+              birth_month: birthmonth,
+              birth_day: birthday
+            },
+            success: function (response) {
+
+            }
+          })
+        }
+
+
+
+      function savebtn() {
         Swal.fire({
           title: '저장을 완료하시겠습니까?',
           icon: 'warning',
@@ -126,21 +157,21 @@
           <h5 style="font-weight: bold">이름을 적어주세요</h5>
           <div class="input-group mb-3">
             <span class="input-group-text bg-info">아기</span>
-            <input type="text" class="form-control" placeholder="" aria-label="Username"
+            <input id="babyname" type="text" class="form-control" placeholder="" aria-label="Username"
                    aria-describedby="basic-addon1">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text bg-info">엄마</span>
             </div>
-            <input type="text" class="form-control" placeholder="" aria-label="Username"
+            <input id="mothername" type="text" class="form-control" placeholder="" aria-label="Username"
                    aria-describedby="basic-addon1">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text bg-info">아빠</span>
             </div>
-            <input type="text" class="form-control" placeholder="" aria-label="Username"
+            <input id="fathername" type="text" class="form-control" placeholder="" aria-label="Username"
                    aria-describedby="basic-addon1">
           </div>
         </div>
@@ -148,7 +179,7 @@
           <h5 style="font-weight: bold">아기 탄생일</h5>
           <div class="row">
             <div class="col">
-              <select class="form-select">
+              <select id="birthyear" class="form-select">
                 <option>년도</option>
                 <option value="1">1980</option>
                 <option value="2">1981</option>
@@ -196,7 +227,7 @@
               </select>
             </div>
             <div class="col">
-              <select class="form-select">
+              <select id="birthmonth" class="form-select">
                 <option>월</option>
                 <option value="1">01</option>
                 <option value="2">02</option>
@@ -213,7 +244,7 @@
               </select>
             </div>
             <div class="col">
-              <select class="form-select">
+              <select id="birthday" class="form-select">
                 <option>일</option>
                 <option value="1">01</option>
                 <option value="2">02</option>
@@ -303,7 +334,7 @@
         </div>
 
         <!-- Button -->
-        <button type="button" class="btn btn-primary savebtn" onclick="save()">
+        <button type="button" class="btn btn-primary savebtn" onclick="savebtn(),save()">
           저장하기
         </button>
 
