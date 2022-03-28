@@ -92,35 +92,73 @@
     </style>
 
     <script>
-        function save() {
-          let babyname = $('#babyname').val()
-          let mothername = $('#mothername').val()
-          let fathername = $('#fathername').val()
 
-          let birthyear = $('#birthyear').val()
-          let birthmonth = $('#birthmonth').val()
-          let birthday = $('#birthday').val()
+      function upload() {
+        const imageInput = $("#imageInput")[0];
+        // 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.
+        console.log("imageInput: ", imageInput.files)
 
-
-          $.ajax({
-            type: "POST",
-            url: "/upload",
-            processData: false,
-            contentType: false,
-            data: {
-              baby_name: babyname,
-              mother_name: mothername,
-              father_name: fathername,
-              birth_year: birthyear,
-              birth_month: birthmonth,
-              birth_day: birthday
-            },
-            success: function (response) {
-
-            }
-          })
+        if (imageInput.files.length === 0) {
+          alert("파일은 선택해주세요");
+          return;
         }
 
+        const formData = new FormData();
+        formData.append("image", imageInput.files[0]);
+
+
+        $.ajax({
+          type: "POST",
+          url: "/upload",
+          processData: false,
+          contentType: false,
+          data: formData,
+          success: function (response) {
+            const message = response.data.values[0];
+            console.log("message: ", message)
+            $("#resultUploadPath").text(message.uploadFilePath)
+          },
+          err: function (err) {
+            console.log("err:", err)
+          }
+        })
+      }
+
+
+
+
+
+
+      function imgsave() {
+
+      }
+
+      function textsave() {
+        let babyname = $('#babyname').val()
+        let mothername = $('#mothername').val()
+        let fathername = $('#fathername').val()
+
+        let birthyear = $('#birthyear').val()
+        let birthmonth = $('#birthmonth').val()
+        let birthday = $('#birthday').val()
+
+
+        $.ajax({
+          type: "POST",
+          url: "/upload",
+          data: {
+            baby_name: babyname,
+            mother_name: mothername,
+            father_name: fathername,
+            birth_year: birthyear,
+            birth_month: birthmonth,
+            birth_day: birthday
+          },
+          success: function (response) {
+
+          }
+        })
+      }
 
 
       function savebtn() {
@@ -334,14 +372,33 @@
         </div>
 
         <!-- Button -->
-        <button type="button" class="btn btn-primary savebtn" onclick="savebtn(),save()">
+        <button type="button" class="btn btn-primary savebtn" onclick="savebtn(),textsave(),imgsave()">
           저장하기
         </button>
-
 
       </div>
     </div>
   </div>
+
+
+  <p>
+    이미지 업로드 테스트 창
+  </p>
+  <div>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" id="imageInput"/>
+    </form>
+    <hr/>
+    <button onclick="upload()">
+      업로드
+    </button>
+    <hr/>
+    <p>
+      업로드결과:
+    </p>
+    <p id="resultUploadPath"></p>
+  </div>
+
 
 </body>
 </html>
