@@ -20,16 +20,25 @@ def make():
 
 @app.route("/upload", methods=['POST'])
 def upload():
-    ## file upload ##
+    babyname = request.form['baby_name']
+    mothername = request.form['mother_name']
+    fathername = request.form['father_name']
+    birthyear = request.form['birth_year']
+    birthmonth = request.form['birth_month']
+    birthday = request.form['birth_day']
     img = request.files['image']
 
-    ## GridFs를 통해 파일을 분할하여 DB에 저장하게 된다
     fs = gridfs.GridFS(db)
     file_img_id = fs.put(img)
 
-    db.contents.insert_one({'img':file_img_id})
-
-    return jsonify({'msg': '저장에 성공했습니다.'})
+    db.contents.insert_one({
+        'babyName': babyname,
+        'motherName': mothername,
+        'fatherName': fathername,
+        'birthYear': birthyear,
+        'birthMonth': birthmonth,
+        'birthDay': birthday,
+        'img': file_img_id})
 
 
 @app.route('/result')
