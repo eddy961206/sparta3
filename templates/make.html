@@ -145,7 +145,7 @@
 
         $.ajax({
           type: "POST",
-          url: "/upload",
+          url: "/make",
           data: {
             baby_name: babyname,
             mother_name: mothername,
@@ -179,7 +179,7 @@
               timer: 1500
             })
             setTimeout(function () {
-              location.href = 'result.html';
+              location.href = '/result';
             }, 1500);
           }
         })
