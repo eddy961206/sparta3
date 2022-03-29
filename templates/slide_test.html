@@ -1,162 +1,47 @@
-<!--automatic slidshow-->
+from flask import Flask, render_template, request, jsonify
+import gridfs
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+app = Flask(__name__)
 
-        body {
-            font-family: Verdana, sans-serif;
-        }
+from pymongo import MongoClient
+client = MongoClient('localhost', 27017)
+db = client.baby_photo
 
-        .mySlides {
-            display: none;
-        }
+@app.route('/')
+def main():
+    return render_template("main.html")
 
-        img {
-            vertical-align: middle;
-            width: 100%;
-            height: auto;
-        }
+@app.route('/make')
+def make():
+    return render_template("make.html")
 
-        /* Slideshow container */
-        .slideshow-container {
-            max-width: 1000px;
-            position: relative;
-            margin: auto;
-        }
+@app.route('/result')
+def result():
+    return render_template("result.html")
 
-        /* Caption text */
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
-        }
+@app.route('/photo', methods=['POST'])
+def photo():
+    img = request.files['image']
+    fs = gridfs.GridFS(db)
+    fs.put(img, filename='photo')
+    ## file find ##
+    data = client.grid_file.fs.files.find_one({'filename': 'name'})
 
-        /* Number text (1/3 etc) */
-        .numbertext {
-            color: black;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-        }
+    ## file download ##
+    photoID = data['_id']
+    outputdata = fs.get(photoID).read()
+    output = open('./images/' + 'back.jpeg', 'wb')
+    output.write(outputdata)
 
-        /* The dots/bullets/indicators */
-        .dot {
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
+@app.route('/upload', methods=['POST'])
+def upload():
+    babyname = request.form['baby_name']
+    mothername = request.form['mother_name']
+    fathername = request.form['father_name']
+    birthyear = request.form['birth_year']
+    birthmonth = request.form['birth_month']
+    birthday = request.form['birth_day']
+    db.contents.insert_one({'babyName': babyname, 'motherName': mothername, 'fatherName': fathername, 'birthYear': birthyear, 'birthMonth': birthmonth, 'birthDay': birthday})
 
-        .active {
-            background-color: #717171;
-        }
-
-        /* Fading animation */
-        .fade {
-            -webkit-animation-name: fade;
-            -webkit-animation-duration: 1.5s;
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @-webkit-keyframes fade {
-            from {
-                opacity: .4
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes fade {
-            from {
-                opacity: .4
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        /* On smaller screens, decrease text size */
-        @media only screen and (max-width: 300px) {
-            .text {
-                font-size: 11px
-            }
-        }
-    </style>
-</head>
-<body>
-
-<h2>Automatic Slideshow</h2>
-<p>Change image every 2 seconds:</p>
-
-<div class="slideshow-container">
-
-    <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img src="https://www.hwasun.go.kr/culture/new/images/hwasun801_01.jpg">
-        <div class="text">Caption One</div>
-    </div>
-
-    <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img src="https://cdn.pixabay.com/photo/2019/08/01/12/36/illustration-4377408_960_720.png">
-        <div class="text">Caption Two</div>
-    </div>
-
-    <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-        <img src="https://cdn.smartlifetv.co.kr/news/photo/202111/12456_16327_1340.jpg" style="width:100%">
-        <div class="text">Caption Three</div>
-    </div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-</div>
-
-<script>
-    var slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-    }
-</script>
-
-
-</body>
-</html>
+if __name__ == '__main__':
+    app.run('0.0.0.0',port=5000,debug=True)

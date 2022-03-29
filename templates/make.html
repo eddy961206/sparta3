@@ -92,41 +92,36 @@
     </style>
 
     <script>
-
-      function upload() {
-        const imageInput = $("#imageInput")[0];
-        // 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.
-        console.log("imageInput: ", imageInput.files)
-
-        if (imageInput.files.length === 0) {
-          alert("파일은 선택해주세요");
-          return;
-        }
-
-        const formData = new FormData();
-        formData.append("image", imageInput.files[0]);
-
-
-        $.ajax({
-          type: "POST",
-          url: "/upload",
-          processData: false,
-          contentType: false,
-          data: formData,
-          success: function (response) {
-            const message = response.data.values[0];
-            console.log("message: ", message)
-            $("#resultUploadPath").text(message.uploadFilePath)
-          },
-          err: function (err) {
-            console.log("err:", err)
-          }
-        })
-      }
-
-
-
-
+        {#function upload() {#}
+        {#    const imageInput = $("#imageInput")[0];#}
+        {#    // 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.#}
+        {#    console.log("imageInput: ", imageInput.files)#}
+        {##}
+        {#    if (imageInput.files.length === 0) {#}
+        {#        alert("파일은 선택해주세요");#}
+        {#        return;#}
+        {#    }#}
+        {##}
+        {#    const formData = new FormData();#}
+        {#    formData.append("image", imageInput.files[0]);#}
+        {##}
+        {#    $.ajax({#}
+        {#        type: "POST",#}
+        {#        url: "/photo",#}
+        {#        processData: false,#}
+        {#        contentType: false,#}
+        {#        data: formData,#}
+        {#        success: function (rtn) {#}
+        {#            const message = rtn.data.values[0];#}
+        {#            console.log("message: ", message)#}
+        {#            $("#resultUploadPath").text(message.uploadFilePath)#}
+        {##}
+        {#        },#}
+        {#        err: function (err) {#}
+        {#            console.log("err:", err)#}
+        {#        }#}
+        {#    })#}
+        {#a}#}
 
 
       function imgsave() {
@@ -141,7 +136,6 @@
         let birthyear = $('#birthyear').val()
         let birthmonth = $('#birthmonth').val()
         let birthday = $('#birthday').val()
-
 
         $.ajax({
           type: "POST",
@@ -159,7 +153,6 @@
           }
         })
       }
-
 
       function savebtn() {
         Swal.fire({
@@ -179,7 +172,7 @@
               timer: 1500
             })
             setTimeout(function () {
-              location.href = 'result.html';
+              location.href = '/result';
             }, 1500);
           }
         })
@@ -189,7 +182,7 @@
 <body>
   <div class="backcolor">
     <div class="wrap">
-      <h1>우리 아이의 사진첩을 만들어보아요</h1>
+      <h1 style="color: #5cb9a6">우리 아이의 사진첩을 만들어보아요</h1>
       <div class="wrap2">
         <div class="family-info container">
           <h5 style="font-weight: bold">이름을 적어주세요</h5>
@@ -219,63 +212,24 @@
             <div class="col">
               <select id="birthyear" class="form-select">
                 <option>년도</option>
-                <option value="1">1980</option>
-                <option value="2">1981</option>
-                <option value="3">1982</option>
-                <option value="4">1983</option>
-                <option value="5">1984</option>
-                <option value="6">1985</option>
-                <option value="7">1986</option>
-                <option value="8">1987</option>
-                <option value="9">1988</option>
-                <option value="10">1989</option>
-                <option value="11">1990</option>
-                <option value="12">1991</option>
-                <option value="13">1992</option>
-                <option value="14">1993</option>
-                <option value="15">1994</option>
-                <option value="16">1995</option>
-                <option value="17">1996</option>
-                <option value="18">1997</option>
-                <option value="19">1998</option>
-                <option value="20">1999</option>
-                <option value="21">2000</option>
-                <option value="22">2001</option>
-                <option value="23">2002</option>
-                <option value="24">2003</option>
-                <option value="25">2004</option>
-                <option value="26">2005</option>
-                <option value="27">2006</option>
-                <option value="28">2007</option>
-                <option value="29">2008</option>
-                <option value="30">2009</option>
-                <option value="31">2010</option>
-                <option value="32">2011</option>
-                <option value="33">2012</option>
-                <option value="34">2013</option>
-                <option value="35">2014</option>
-                <option value="36">2015</option>
-                <option value="37">2016</option>
-                <option value="38">2017</option>
-                <option value="39">2018</option>
-                <option value="40">2019</option>
-                <option value="41">2020</option>
-                <option value="42">2021</option>
-                <option value="43">2022</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
               </select>
             </div>
             <div class="col">
               <select id="birthmonth" class="form-select">
                 <option>월</option>
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="3">03</option>
-                <option value="4">04</option>
-                <option value="5">05</option>
-                <option value="6">06</option>
-                <option value="7">07</option>
-                <option value="8">08</option>
-                <option value="9">09</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
@@ -284,15 +238,15 @@
             <div class="col">
               <select id="birthday" class="form-select">
                 <option>일</option>
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="3">03</option>
-                <option value="4">04</option>
-                <option value="5">05</option>
-                <option value="6">06</option>
-                <option value="7">07</option>
-                <option value="8">08</option>
-                <option value="9">09</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
@@ -381,23 +335,11 @@
   </div>
 
 
-  <p>
-    이미지 업로드 테스트 창
-  </p>
-  <div>
-    <form id="uploadForm" enctype="multipart/form-data">
-      <input type="file" id="imageInput"/>
-    </form>
-    <hr/>
-    <button onclick="upload()">
-      업로드
-    </button>
-    <hr/>
-    <p>
-      업로드결과:
-    </p>
-    <p id="resultUploadPath"></p>
-  </div>
+ <form action="/photo" method="post" id="uploadForm" enctype="multipart/form-data">
+            <label>이미지 첨부</label>
+            <input type="file" name="image" class="form-control" placeholder="">
+            <input type="submit" class="btn btn-primary btn_location" value="Submit">
+</form>
 
 
 </body>

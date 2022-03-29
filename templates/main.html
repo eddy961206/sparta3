@@ -23,6 +23,15 @@
     <title>아기사진첩</title>
 
 
+    <meta content="우리 아기 사진첩" property="og:title">
+    <meta content="아이 돌 사진첩" property="og:site_name">
+    <meta content="우리 아기 잘 크고 있어요" property="og:description">
+    <meta content="{{ url_for('static', filename='ogimage.jpg') }}" property="og:image">
+    <meta content="https://s3.ap-northeast-2.amazonaws.com/mcard.fromtoday.co.kr/w/IHukz8/photos/IHukz8_mcard_2022-03-25_00a4ce7df0d94c55befb43d4a4168108_w800.jpg"
+          property="og:image">
+    <meta content="website" property="og:type">
+
+
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
     <style>
@@ -30,26 +39,39 @@
             font-family: 'Jua', sans-serif;
         }
 
-        .jumbotron {
-            padding-top: 5vh;
-            padding-bottom: 3vh;
+        .backcolor::after {
+            width: 100%;
+            height: 100%;
+            content: "";
+            background: url("https://cdn.pixabay.com/photo/2020/10/14/16/14/space-5654794_960_720.png");
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .wrap {
+            width: 1000px;
+            padding-top: 0px;
             margin: auto;
-            width : 80%;
+            background-color: #f4eae5;
+            border: 3px solid #eeb8ba;
+        }
+
+        .jumbotron {
+            background-color: #eeb8ba;
+            text-align: center;
+            padding-top: 1vh;
+            padding-bottom: 0vh;
+            margin: auto;
+            width: 60%;
         }
 
         .card-boxes {
             display: flex;
             justify-content: center;
-        }
-
-        .left {
-            margin: 60px 50px 300px 100px;
-            float: left;
-        }
-
-        .right {
-            margin: 50px 100px 300px 50px;
-            float: right;
+            margin: 15px 100px 13px 100px;
         }
 
         .button {
@@ -61,37 +83,28 @@
 </head>
 
 <body>
-<div class="jumbotron reduced-jumbotron">
-  <h1 class="display-4">아기사진첩</h1>
-  <p class="lead">소중한 아기의 사진을 모아서 공유해 보세요!</p>
-  <hr class="my-4">
-</div>
-<div class="card-boxes">
-    <div class="card left" style="width: 30vw;">
-        <img alt="Card image cap"
-             class="card-img-top"
-             src="https://static3.depositphotos.com/1000883/126/i/950/depositphotos_1262575-stock-photo-cover-page-for-baby-album.jpg">
-        <div class="card-body">
-            <h5 class="card-title">시작</h5>
-        </div>
-        <div class="card-body button">
-            <a class="card-link" href="#">미리보기</a>
-            <a class="card-link" href="#">제작하기</a>
-        </div>
-    </div>
-    <div class="card right" style="width: 30vw;">
-        <img alt="Card image cap"
-             class="card-img-top"
-             src="https://static3.depositphotos.com/1000883/120/i/950/depositphotos_1209068-stock-photo-framework-for-photo-or-congratulation.jpg">
-        <div class="card-body">
-            <h5 class="card-title">동행</h5>
-        </div>
-        <div class="card-body button">
-            <a class="card-link" href="#">미리보기</a>
-            <a class="card-link" href="#">제작하기</a>
+    <div class="backcolor">
+        <div class="wrap">
+            <div class="jumbotron reduced-jumbotron">
+                <h1 class="display-4">아기사진첩</h1>
+                <p class="lead">소중한 아기의 사진을 모아서 공유해 보세요!</p>
+            </div>
+            <div class="card-boxes">
+                <div class="card right" style="width: 30vw;">
+                    <img alt="Card image cap"
+                         class="card-img-top"
+                         src="/static/result_example.png">
+                    <div class="card-body">
+                        <h5 class="card-title">동행</h5>
+                    </div>
+                    <div class="card-body button">
+                        <a class="card-link" href="#">예시</a>
+                        <a class="card-link" href="/make">제작하기</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 </body>
 
