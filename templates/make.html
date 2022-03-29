@@ -98,6 +98,7 @@
         // 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.
         console.log("imageInput: ", imageInput.files)
 
+
         if (imageInput.files.length === 0) {
           alert("파일은 선택해주세요");
           return;
@@ -105,6 +106,8 @@
 
         const formData = new FormData();
         formData.append("image", imageInput.files[0]);
+
+
 
 
         $.ajax({
@@ -122,6 +125,13 @@
             console.log("err:", err)
           }
         })
+
+         for (var key of formData.keys()) {
+              console.log(key);
+            }
+            for (var value of formData.values()) {
+              console.log(value);
+            }
       }
 
 
@@ -189,7 +199,7 @@
 <body>
   <div class="backcolor">
     <div class="wrap">
-      <h1>우리 아이의 사진첩을 만들어보아요</h1>
+      <h1 style="color: #5cb9a6">우리 아이의 사진첩을 만들어보아요</h1>
       <div class="wrap2">
         <div class="family-info container">
           <h5 style="font-weight: bold">이름을 적어주세요</h5>
