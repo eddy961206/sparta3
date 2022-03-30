@@ -329,10 +329,11 @@
             <label class="input-group-text bg-primary bg-opacity-75">12개월</label>
             <input type="file" class="form-control" name="photo12mth">
           </div>
+          <!-- input Button -->
+          <input type="submit" class="btn btn-primary btn_location" value="Submit">
         </form>
 
         <!-- Button -->
-
         <button type="button" class="btn btn-primary savebtn" onclick="savebtn(),textsave()">
           저장하기
         </button>
@@ -342,24 +343,6 @@
   </div>
 
 
-  <p>
-    이미지 업로드 테스트 창
-  </p>
-  <div>
-    <form action="/make2" method="post" id="uploadForm" enctype="multipart/form-data">
-      <input type="file" name="imagetest" id="imageInput" placeholder="">
-      <input type="submit" class="btn btn-primary btn_location" value="Submit">
-    </form>
-    <hr/>
-<!--    <button onclick="imagesave()">-->
-<!--      업로드-->
-<!--    </button>-->
-    <hr/>
-    <p>
-      업로드결과:
-    </p>
-    <p id="resultUploadPath"></p>
-  </div>
 
 
 </body>

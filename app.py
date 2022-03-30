@@ -1,20 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 import gridfs
-# import boto3
-# from botocore.client import Config
-#
-#
-# def handle_upload_img(f): # f = 파일명
-#     data = open('plist/static/plist/img/artist/'+f+'.jpg', 'rb')
-#     # '로컬의 해당파일경로'+ 파일명 + 확장자
-#     s3 = boto3.resource(
-#         's3',
-#         aws_access_key_id=ACCESS_KEY_ID,
-#         aws_secret_access_key=ACCESS_SECRET_KEY,
-#         config=Config(signature_version='s3v4')
-#     )
-#     s3.Bucket(BUCKET_NAME).put_object(
-#         Key=f, Body=data, ContentType='image/jpg')
 
 app = Flask(__name__)
 
@@ -97,16 +82,6 @@ def image_save():
     db.photos.insert_one({'img_10mth': photo_10mth_img})
     db.photos.insert_one({'img_11mth': photo_11mth_img})
     db.photos.insert_one({'img_12mth': photo_12mth_img})
-    return jsonify({'msg': '저장에 성공했습니다.'})
-
-
-
-@app.route("/make2", methods=['POST'])
-def imagesave():
-    imgtest = request.files['imagetest']
-    fs = gridfs.GridFS(db)
-    test_img_id = fs.put(imgtest)
-    db.test.insert_one({'img': test_img_id})
     return jsonify({'msg': '저장에 성공했습니다.'})
 
 
