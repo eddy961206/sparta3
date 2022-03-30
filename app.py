@@ -19,19 +19,57 @@ def make():
 def result():
     return render_template("result.html")
 
-@app.route('/photo', methods=['POST'])
-def photo():
-    img = request.files['image']
+@app.route("/make_photo", methods=['POST'])
+def image_save():
+    photo_1d = request.files['photo1d']
+    photo_50d = request.files['photo50d']
+    photo_100d = request.files['photo100d']
+    photo_4mth = request.files['photo4mth']
+    photo_5mth = request.files['photo5mth']
+    photo_6mth = request.files['photo6mth']
+    photo_7mth = request.files['photo7mth']
+    photo_8mth = request.files['photo8mth']
+    photo_9mth = request.files['photo9mth']
+    photo_10mth = request.files['photo10mth']
+    photo_11mth = request.files['photo11mth']
+    photo_12mth = request.files['photo12mth']
     fs = gridfs.GridFS(db)
-    fs.put(img, filename='photo')
-    ## file find ##
-    data = client.grid_file.fs.files.find_one({'filename': 'name'})
+    photo_1d_img = fs.put(photo_1d)
+    photo_50d_img = fs.put(photo_50d)
+    photo_100d_img = fs.put(photo_100d)
+    photo_4mth_img = fs.put(photo_4mth)
+    photo_5mth_img = fs.put(photo_5mth)
+    photo_6mth_img = fs.put(photo_6mth)
+    photo_7mth_img = fs.put(photo_7mth)
+    photo_8mth_img = fs.put(photo_8mth)
+    photo_9mth_img = fs.put(photo_9mth)
+    photo_10mth_img = fs.put(photo_10mth)
+    photo_11mth_img = fs.put(photo_11mth)
+    photo_12mth_img = fs.put(photo_12mth)
+    db.photos.insert_one({'img_1d': photo_1d_img})
+    db.photos.insert_one({'img_50d': photo_50d_img})
+    db.photos.insert_one({'img_100d': photo_100d_img})
+    db.photos.insert_one({'img_4mth': photo_4mth_img})
+    db.photos.insert_one({'img_5mth': photo_5mth_img})
+    db.photos.insert_one({'img_6mth': photo_6mth_img})
+    db.photos.insert_one({'img_7mth': photo_7mth_img})
+    db.photos.insert_one({'img_8mth': photo_8mth_img})
+    db.photos.insert_one({'img_9mth': photo_9mth_img})
+    db.photos.insert_one({'img_10mth': photo_10mth_img})
+    db.photos.insert_one({'img_11mth': photo_11mth_img})
+    db.photos.insert_one({'img_12mth': photo_12mth_img})
+    return jsonify({'msg': '저장에 성공했습니다.'})
 
-    ## file download ##
-    photoID = data['_id']
-    outputdata = fs.get(photoID).read()
-    output = open('./images/' + 'back.jpeg', 'wb')
-    output.write(outputdata)
+
+@app.route("/make2", methods=['POST'])
+def imagesave():
+    imgtest = request.files['imagetest']
+    fs = gridfs.GridFS(db)
+    test_img_id = fs.put(imgtest)
+    db.test.insert_one({'img': test_img_id})
+    return jsonify({'msg': '저장에 성공했습니다.'})
+
+
 
 @app.route('/upload', methods=['POST'])
 def upload():

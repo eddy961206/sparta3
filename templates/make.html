@@ -87,45 +87,34 @@
         display: block;
       }
 
-
-
     </style>
 
     <script>
-        {#function upload() {#}
-        {#    const imageInput = $("#imageInput")[0];#}
-        {#    // 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.#}
-        {#    console.log("imageInput: ", imageInput.files)#}
-        {##}
-        {#    if (imageInput.files.length === 0) {#}
-        {#        alert("파일은 선택해주세요");#}
-        {#        return;#}
-        {#    }#}
-        {##}
-        {#    const formData = new FormData();#}
-        {#    formData.append("image", imageInput.files[0]);#}
-        {##}
-        {#    $.ajax({#}
-        {#        type: "POST",#}
-        {#        url: "/photo",#}
-        {#        processData: false,#}
-        {#        contentType: false,#}
-        {#        data: formData,#}
-        {#        success: function (rtn) {#}
-        {#            const message = rtn.data.values[0];#}
-        {#            console.log("message: ", message)#}
-        {#            $("#resultUploadPath").text(message.uploadFilePath)#}
-        {##}
-        {#        },#}
-        {#        err: function (err) {#}
-        {#            console.log("err:", err)#}
-        {#        }#}
-        {#    })#}
-        {#a}#}
 
+      function upload() {
+        const imageInput = $("#imageInput")[0];
+        if (imageInput.files.length === 0) {
+          alert("파일은 선택해주세요");
+          return;
+        }
 
-      function imgsave() {
+        const formData = new FormData();
+        formData.append('image', imageInput.files[0]);
 
+        $.ajax({
+          type: "POST",
+          url: "/make2",
+          processData: false,
+          contentType: false,
+          data: formData,
+          success: function (rtn) {
+            const message = rtn.data.values[0];
+            $("#resultUploadPath").text(message.uploadFilePath)
+          },
+          err: function (err) {
+            console.log("err:", err)
+          }
+        })
       }
 
       function textsave() {
@@ -335,9 +324,9 @@
   </div>
 
 
- <form action="/photo" method="post" id="uploadForm" enctype="multipart/form-data">
+ <form action="/make2" method="post" id="uploadForm" enctype="multipart/form-data">
             <label>이미지 첨부</label>
-            <input type="file" name="image" class="form-control" placeholder="">
+            <input type="file" name="imagetest" class="form-control" placeholder="">
             <input type="submit" class="btn btn-primary btn_location" value="Submit">
 </form>
 
