@@ -92,27 +92,17 @@
     <script>
 
       function upload() {
-        const imageInput = $("#imageInput")[0];
-        if (imageInput.files.length === 0) {
-          alert("파일은 선택해주세요");
-          return;
-        }
-
         const formData = new FormData();
         formData.append('image', imageInput.files[0]);
 
         $.ajax({
           type: "POST",
-          url: "/make2",
+          url: "/make_photo",
           processData: false,
           contentType: false,
           data: formData,
-          success: function (rtn) {
-            const message = rtn.data.values[0];
-            $("#resultUploadPath").text(message.uploadFilePath)
-          },
-          err: function (err) {
-            console.log("err:", err)
+          success: function (response) {
+
           }
         })
       }
@@ -265,70 +255,64 @@
         <h5 style="font-weight: bold">사진을 넣어주세요</h5>
         <div class="baby-img"></div>
 
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-25">탄생일</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-25">50일</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-25">100일</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-50">4개월</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-50">5개월</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-50">6개월</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-50">7개월</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-50">8개월</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-50">9개월</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-75">10개월</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-75">11개월</label>
-          <input type="file" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text bg-primary bg-opacity-75">12개월</label>
-          <input type="file" class="form-control">
-        </div>
-
-        <!-- Button -->
-        <button type="button" class="btn btn-primary savebtn" onclick="savebtn(),textsave(),imgsave()">
-          저장하기
-        </button>
-
+        <form action="/make_photo" method="post" enctype="multipart/form-data">
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-25">탄생일</label>
+            <input type="file" class="form-control" name="photo1d">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-25">50일</label>
+            <input type="file" class="form-control" name="photo50d">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-25">100일</label>
+            <input type="file" class="form-control" name="photo100d">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-50">4개월</label>
+            <input type="file" class="form-control" name="photo4mth">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-50">5개월</label>
+            <input type="file" class="form-control" name="photo5mth">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-50">6개월</label>
+            <input type="file" class="form-control" name="photo6mth">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-50">7개월</label>
+            <input type="file" class="form-control" name="photo7mth">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-50">8개월</label>
+            <input type="file" class="form-control" name="photo8mth">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-50">9개월</label>
+            <input type="file" class="form-control" name="photo9mth">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-75">10개월</label>
+            <input type="file" class="form-control" name="photo10mth">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-75">11개월</label>
+            <input type="file" class="form-control" name="photo11mth">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text bg-primary bg-opacity-75">12개월</label>
+            <input type="file" class="form-control" name="photo12mth">
+          </div>
+           <button class="btn btn-primary savebtn" onclick="savebtn(),textsave()">
+            저장하기
+          </button>
+        </form>
       </div>
     </div>
   </div>
 
 
- <form action="/make2" method="post" id="uploadForm" enctype="multipart/form-data">
-            <label>이미지 첨부</label>
-            <input type="file" name="imagetest" class="form-control" placeholder="">
-            <input type="submit" class="btn btn-primary btn_location" value="Submit">
-</form>
 
 
 </body>

@@ -58,16 +58,8 @@ def image_save():
     db.photos.insert_one({'img_10mth': photo_10mth_img})
     db.photos.insert_one({'img_11mth': photo_11mth_img})
     db.photos.insert_one({'img_12mth': photo_12mth_img})
-    return jsonify({'msg': '저장에 성공했습니다.'})
+    return jsonify({'msg': '저장이 완료되었습니다!'})
 
-
-@app.route("/make2", methods=['POST'])
-def imagesave():
-    imgtest = request.files['imagetest']
-    fs = gridfs.GridFS(db)
-    test_img_id = fs.put(imgtest)
-    db.test.insert_one({'img': test_img_id})
-    return jsonify({'msg': '저장에 성공했습니다.'})
 
 
 
