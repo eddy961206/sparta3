@@ -91,21 +91,6 @@
 
     <script>
 
-      function upload() {
-        const formData = new FormData();
-        formData.append('image', imageInput.files[0]);
-
-        $.ajax({
-          type: "POST",
-          url: "/make_photo",
-          processData: false,
-          contentType: false,
-          data: formData,
-          success: function (response) {
-
-          }
-        })
-      }
 
       function textsave() {
         let babyname = $('#babyname').val()
@@ -128,6 +113,7 @@
             birth_day: birthday
           },
           success: function (response) {
+
 
           }
         })
@@ -255,7 +241,9 @@
         <h5 style="font-weight: bold">사진을 넣어주세요</h5>
         <div class="baby-img"></div>
 
-        <form action="/make_photo" method="post" enctype="multipart/form-data">
+        <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
+
+        <form action="/make_photo" method="post" enctype="multipart/form-data" target="iframe1">
           <div class="input-group mb-3">
             <label class="input-group-text bg-primary bg-opacity-25">탄생일</label>
             <input type="file" class="form-control" name="photo1d">
@@ -308,6 +296,7 @@
             저장하기
           </button>
         </form>
+
       </div>
     </div>
   </div>
