@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" class="wf-castoro-n4-active wf-active"
+<html class="wf-castoro-n4-active wf-active" lang="en"
       style="--primary-bg-color:#f4f1ee; --primary-color:#c28e79; --secondary-color:#d8b8aa; --footer-bg-color:rgb(234, 230, 230, 0.64); --font-size:16px; --account-width:290px; --notice-margin-lr:2rem; --calendar-margin-lr:2rem; --waytocome-margin-lr:2rem; --guestbook-margin-lr:2rem; --font-regular:RIDIBatang; --font-regular-spacing:-0.4px; --font-gothic:Pretendard-Regular; --font-gothic-spacing:-0.2px; --font-bold:RIDIBatang; --font-bold-weight:bold;">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="google" content="notranslate">
-    <meta http-equiv="X-UA-Compatible" content="IE=11">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+          name="viewport">
+    <meta content="notranslate" name="google">
+    <meta content="IE=11" http-equiv="X-UA-Compatible">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    <script crossorigin="anonymous"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <title>♥우리 아기 사진첩</title>
 
-    <meta property="og:title" content="우리 아기 사진첩">
-    <meta property="og:site_name" content="아이 돌 사진첩">
-    <meta property="og:description" content="우리 아기 잘 크고 있어요">
-    <meta property="og:image" content="{{ url_for('static', filename='ogimage.jpg') }}">
+    <meta content="우리 아기 사진첩" property="og:title">
+    <meta content="아이 돌 사진첩" property="og:site_name">
+    <meta content="우리 아기 잘 크고 있어요" property="og:description">
+    <meta content="{{ url_for('static', filename='ogimage.jpg') }}" property="og:image">
     <!--    <meta property="og:image"-->
     <!--          content="https://s3.ap-northeast-2.amazonaws.com/mcard.fromtoday.co.kr/w/IHukz8/photos/IHukz8_mcard_2022-03-25_00a4ce7df0d94c55befb43d4a4168108_w800.jpg">-->
-    <meta property="og:type" content="website">
+    <meta content="website" property="og:type">
 
     <style type="text/css">
         .vue-dialog div {
@@ -90,7 +90,7 @@
             border-left: 1px solid #eee;
         }
     </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Castoro" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Castoro" media="all" rel="stylesheet">
     <style type="text/css">#app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -778,25 +778,23 @@
     <div class="mcard-view">
         <div class="inner">
             <div></div>
-            <div data-v-9b6009a0="" class="mcard-intro">
-                <div data-v-9b6009a0="" class="title">
-                    <div data-v-9b6009a0="" class="baby">아기이름</div>
-                    <div data-v-9b6009a0="" class="papa">아빠이름</div>
-                    <div data-v-9b6009a0="" class="and">&amp;</div>
-                    <div data-v-9b6009a0="" class="mama">엄마이름</div>
-                    <div data-v-9b6009a0="" class="date-place">2021년 4월 18일 12시34분</div>
+            <div class="mcard-intro" data-v-9b6009a0="">
+                <div class="title" data-v-9b6009a0="">
+                    <div class="baby" data-v-9b6009a0="">아기이름</div>
+                    <div class="papa" data-v-9b6009a0="">아빠이름</div>
+                    <div class="and" data-v-9b6009a0="">&amp;</div>
+                    <div class="mama" data-v-9b6009a0="">엄마이름</div>
+                    <div class="date-place" data-v-9b6009a0="">2021년 4월 18일 12시34분</div>
                 </div>
-                <div data-v-9b6009a0="" class="photo-wrap">
-                    <div data-v-4fe70a99="" data-v-9b6009a0="" class="intro-blend-wrap photo">
-                        <img data-v-4fe70a99=""
-                             src="${메인사진1}"
-                             width="1280"
+                <div class="photo-wrap" data-v-9b6009a0="">
+                    <div class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="">
+                        <img class="intro-blend-image"
+                             data-v-4fe70a99=""
                              height="853"
-                             class="intro-blend-image">
-                        <video data-v-4fe70a99="" id="intro-player" autoplay="autoplay" loop="loop" playsinline=""
-                               muted="muted" class="intro-blend-video" style="opacity: 1;">
-                            <source data-v-4fe70a99="" src="https://mcard.fromtoday.co.kr/mcard/assets/flower_00.mp4">
-                        </video>
+                             src="data:image/jpeg;base64, {img_50d_binary}"
+                             alt="이미지 표시 안됨!!!"
+                             width="1280">
+
                     </div>
                 </div>
             </div>
@@ -839,9 +837,9 @@
                             <div>
                                 <div class="carousel-wrap" style="">
                                     <div class="carousel-arrow" style="left: 0px;">
-                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 55.753 55.753" xml:space="preserve"><g><path d="M12.745,23.915c0.283-0.282,0.59-0.52,0.913-0.727L35.266,1.581c2.108-2.107,5.528-2.108,7.637,0.001
+                                        <svg id="Capa_1" version="1.1" viewBox="0 0 55.753 55.753"
+                                             x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g><path d="M12.745,23.915c0.283-0.282,0.59-0.52,0.913-0.727L35.266,1.581c2.108-2.107,5.528-2.108,7.637,0.001
             c2.109,2.108,2.109,5.527,0,7.637L24.294,27.828l18.705,18.706c2.109,2.108,2.109,5.526,0,7.637
             c-1.055,1.056-2.438,1.582-3.818,1.582s-2.764-0.526-3.818-1.582L13.658,32.464c-0.323-0.207-0.632-0.445-0.913-0.727
             c-1.078-1.078-1.598-2.498-1.572-3.911C11.147,26.413,11.667,24.994,12.745,23.915z"></path></g>
@@ -862,9 +860,9 @@
                                             <g></g></svg>
                                     </div>
                                     <div class="carousel-arrow" style="right: 0px;">
-                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 55.752 55.752" xml:space="preserve"><g><path d="M43.006,23.916c-0.28-0.282-0.59-0.52-0.912-0.727L20.485,1.581c-2.109-2.107-5.527-2.108-7.637,0.001
+                                        <svg id="Capa_1" version="1.1" viewBox="0 0 55.752 55.752"
+                                             x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g><path d="M43.006,23.916c-0.28-0.282-0.59-0.52-0.912-0.727L20.485,1.581c-2.109-2.107-5.527-2.108-7.637,0.001
             c-2.109,2.108-2.109,5.527,0,7.637l18.611,18.609L12.754,46.535c-2.11,2.107-2.11,5.527,0,7.637c1.055,1.053,2.436,1.58,3.817,1.58
             s2.765-0.527,3.817-1.582l21.706-21.703c0.322-0.207,0.631-0.444,0.912-0.727c1.08-1.08,1.598-2.498,1.574-3.912
             C44.605,26.413,44.086,24.993,43.006,23.916z"></path></g>
@@ -902,53 +900,54 @@
                                 <div class="dot-wrap">
                                     <div class="dot-indicator"></div>
                                     <div class="dot-indicator"></div>
-                                    <div class="dot-indicator" active="true"></div>
+                                    <div active="true" class="dot-indicator"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-<!--                <div>-->
-<!--                    <div class="guestbook-wrap">-->
-<!--                        <div class="m-title fade-in" style="opacity: 1; transform: translate(0px, 0px);">-->
-<!--                            방명록-->
-<!--                        </div>-->
-<!--                        <div class="c-guestbook gothic">-->
-<!--                            <div class="comments fade-in" style="opacity: 1; transform: translate(0px, 0px);">-->
-<!--                                <div class="item empty">-->
-<!--                                    <svg height="436pt" viewBox="-6 0 436 436" width="436pt"-->
-<!--                                         xmlns="http://www.w3.org/2000/svg">-->
-<!--                                        <path d="m405.269531 95.183594c-15.378906-15.332032-38.886719-19.011719-58.214843-9.109375v-36.074219c-.03125-27.601562-22.398438-49.96875-50-50h-247.054688c-27.601562.03125-49.96875 22.398438-50 50v336c.03125 27.601562 22.398438 49.96875 50 50h247.054688c27.601562-.03125 49.96875-22.398438 50-50v-153.125l62.601562-62.601562c19.527344-19.527344 19.527344-51.183594 0-70.710938zm-220.289062 187.9375 36.425781 36.761718-49.578125 13.152344zm55.722656 27.820312-46.8125-47.242187 135.117187-134.730469 46.835938 46.832031zm86.351563 75.058594c-.019532 16.5625-13.4375 29.980469-30 30h-247.054688c-16.5625-.019531-29.980469-13.4375-30-30v-336c.019531-16.5625 13.4375-29.980469 30-30h247.054688c16.5625.019531 29.984374 13.4375 30 30v52.664062l-154.34375 153.90625c-1.257813 1.253907-2.160157 2.820313-2.609376 4.535157l-21.992187 83.457031c-.90625 3.441406.085937 7.105469 2.605469 9.625 2.519531 2.515625 6.183594 3.5 9.628906 2.585938l82.890625-21.992188c1.703125-.449219 3.257813-1.34375 4.507813-2.59375l79.3125-79.3125zm68.457031-229.867188-5.527344 5.527344-46.816406-46.816406 5.574219-5.558594c11.730468-11.65625 30.675781-11.636718 42.386718.039063l4.382813 4.382812c11.699219 11.722657 11.695312 30.703125 0 42.425781zm0 0"></path>-->
-<!--                                    </svg>-->
-<!--                                    첫 번째 축하 글을 남겨주세요-->
-<!--                                </div>-->
-<!--                                <div class="pagination-wrap">&lt;!&ndash;&ndash;&gt;</div>-->
-<!--                                <div class="writing">-->
-<!--                                    <button>-->
-<!--                                        작성하기-->
-<!--                                    </button>-->
-<!--                                </div>-->
-<!--                            </div> &lt;!&ndash;&ndash;&gt;</div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div>-->
+                <!--                    <div class="guestbook-wrap">-->
+                <!--                        <div class="m-title fade-in" style="opacity: 1; transform: translate(0px, 0px);">-->
+                <!--                            방명록-->
+                <!--                        </div>-->
+                <!--                        <div class="c-guestbook gothic">-->
+                <!--                            <div class="comments fade-in" style="opacity: 1; transform: translate(0px, 0px);">-->
+                <!--                                <div class="item empty">-->
+                <!--                                    <svg height="436pt" viewBox="-6 0 436 436" width="436pt"-->
+                <!--                                         xmlns="http://www.w3.org/2000/svg">-->
+                <!--                                        <path d="m405.269531 95.183594c-15.378906-15.332032-38.886719-19.011719-58.214843-9.109375v-36.074219c-.03125-27.601562-22.398438-49.96875-50-50h-247.054688c-27.601562.03125-49.96875 22.398438-50 50v336c.03125 27.601562 22.398438 49.96875 50 50h247.054688c27.601562-.03125 49.96875-22.398438 50-50v-153.125l62.601562-62.601562c19.527344-19.527344 19.527344-51.183594 0-70.710938zm-220.289062 187.9375 36.425781 36.761718-49.578125 13.152344zm55.722656 27.820312-46.8125-47.242187 135.117187-134.730469 46.835938 46.832031zm86.351563 75.058594c-.019532 16.5625-13.4375 29.980469-30 30h-247.054688c-16.5625-.019531-29.980469-13.4375-30-30v-336c.019531-16.5625 13.4375-29.980469 30-30h247.054688c16.5625.019531 29.984374 13.4375 30 30v52.664062l-154.34375 153.90625c-1.257813 1.253907-2.160157 2.820313-2.609376 4.535157l-21.992187 83.457031c-.90625 3.441406.085937 7.105469 2.605469 9.625 2.519531 2.515625 6.183594 3.5 9.628906 2.585938l82.890625-21.992188c1.703125-.449219 3.257813-1.34375 4.507813-2.59375l79.3125-79.3125zm68.457031-229.867188-5.527344 5.527344-46.816406-46.816406 5.574219-5.558594c11.730468-11.65625 30.675781-11.636718 42.386718.039063l4.382813 4.382812c11.699219 11.722657 11.695312 30.703125 0 42.425781zm0 0"></path>-->
+                <!--                                    </svg>-->
+                <!--                                    첫 번째 축하 글을 남겨주세요-->
+                <!--                                </div>-->
+                <!--                                <div class="pagination-wrap">&lt;!&ndash;&ndash;&gt;</div>-->
+                <!--                                <div class="writing">-->
+                <!--                                    <button>-->
+                <!--                                        작성하기-->
+                <!--                                    </button>-->
+                <!--                                </div>-->
+                <!--                            </div> &lt;!&ndash;&ndash;&gt;</div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
                 <div class="footer-wrap">
                     <div class="kakao-wrap">
-<!--                        <div class="btn-kakao">-->
-<!--                            <svg id="Bold" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24"-->
-<!--                                 width="512"-->
-<!--                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor">-->
-<!--                                <path d="m9.462 9.306-.692 1.951h1.383z"></path>-->
-<!--                                <path d="m12 1c-6.627 0-12 4.208-12 9.399 0 3.356 2.246 6.301 5.625 7.963-1.299 4.45-1.333 4.47-1.113 4.599.276.161.634-.005 5.357-3.311.692.097 1.404.148 2.131.148 6.627 0 12-4.208 12-9.399s-5.373-9.399-12-9.399zm-5.942 12.023c0 .362-.311.657-.692.657s-.692-.295-.692-.657v-4.086h-1.08c-.375 0-.679-.302-.679-.673s.303-.674.678-.674h3.545c.375 0 .679.302.679.673s-.305.674-.679.674h-1.08zm5.378.648c-.72 0-.587-.565-.919-1.195h-2.111c-.329.625-.2 1.195-.919 1.195-.693.001-.815-.421-.604-1.071l1.656-4.33c.117-.33.471-.669.922-.679.452.01.807.349.923.679 1.093 3.39 2.654 5.402 1.052 5.401zm3.939-.092h-2.221c-1.159 0-.454-1.565-.663-5.301 0-.379.317-.688.707-.688s.707.308.707.688v4.04h1.471c.366 0 .663.283.663.63-.001.348-.298.631-.664.631zm5.419-.518c-.025.181-.122.344-.269.454-.955.721-1.661-1.381-2.593-2.271l-.24.239v1.5c0 .38-.31.688-.693.688-.382 0-.692-.308-.692-.688v-4.705c0-.379.31-.688.692-.688s.692.308.692.688v1.478c1.277-.958 1.985-2.67 2.792-1.869.792.786-.848 1.474-1.527 2.422 1.604 2.212 1.909 2.267 1.838 2.752z"></path>-->
-<!--                            </svg>-->
-<!--                            <span style="display: inline-block; width: 8.2rem; margin-left: 6px;">카카오톡으로 공유하기</span>-->
-<!--                        </div>-->
+                        <!--                        <div class="btn-kakao">-->
+                        <!--                            <svg id="Bold" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24"-->
+                        <!--                                 width="512"-->
+                        <!--                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor">-->
+                        <!--                                <path d="m9.462 9.306-.692 1.951h1.383z"></path>-->
+                        <!--                                <path d="m12 1c-6.627 0-12 4.208-12 9.399 0 3.356 2.246 6.301 5.625 7.963-1.299 4.45-1.333 4.47-1.113 4.599.276.161.634-.005 5.357-3.311.692.097 1.404.148 2.131.148 6.627 0 12-4.208 12-9.399s-5.373-9.399-12-9.399zm-5.942 12.023c0 .362-.311.657-.692.657s-.692-.295-.692-.657v-4.086h-1.08c-.375 0-.679-.302-.679-.673s.303-.674.678-.674h3.545c.375 0 .679.302.679.673s-.305.674-.679.674h-1.08zm5.378.648c-.72 0-.587-.565-.919-1.195h-2.111c-.329.625-.2 1.195-.919 1.195-.693.001-.815-.421-.604-1.071l1.656-4.33c.117-.33.471-.669.922-.679.452.01.807.349.923.679 1.093 3.39 2.654 5.402 1.052 5.401zm3.939-.092h-2.221c-1.159 0-.454-1.565-.663-5.301 0-.379.317-.688.707-.688s.707.308.707.688v4.04h1.471c.366 0 .663.283.663.63-.001.348-.298.631-.664.631zm5.419-.518c-.025.181-.122.344-.269.454-.955.721-1.661-1.381-2.593-2.271l-.24.239v1.5c0 .38-.31.688-.693.688-.382 0-.692-.308-.692-.688v-4.705c0-.379.31-.688.692-.688s.692.308.692.688v1.478c1.277-.958 1.985-2.67 2.792-1.869.792.786-.848 1.474-1.527 2.422 1.604 2.212 1.909 2.267 1.838 2.752z"></path>-->
+                        <!--                            </svg>-->
+                        <!--                            <span style="display: inline-block; width: 8.2rem; margin-left: 6px;">카카오톡으로 공유하기</span>-->
+                        <!--                        </div>-->
                         <div class="btn-kakao">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd"
+                            <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd"
                                       d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                                      clip-rule="evenodd"></path>
+                                      fill-rule="evenodd"></path>
                             </svg>
-                            <span style="display: inline-block; width: 8.2rem; margin-left: 6px;">사진첩 링크 복사하기</span><br>완성된 사진첩을 공유해보세요!
+                            <span style="display: inline-block; width: 8.2rem; margin-left: 6px;">사진첩 링크 복사하기</span><br>완성된
+                            사진첩을 공유해보세요!
                         </div>
                     </div>
                 </div>
