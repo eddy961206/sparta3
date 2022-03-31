@@ -15,6 +15,9 @@
     <script crossorigin="anonymous"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
 
     <title>♥우리 아기 사진첩</title>
 
@@ -364,14 +367,17 @@
 
     .mcard-intro .photo-wrap[data-v-9b6009a0] {
         background: #fff
+        object-fit: cover;
     }
 
     .mcard-intro .photo[data-v-9b6009a0] {
         line-height: 0
+        object-fit: cover;
     }
 
     .mcard-intro .photo img[data-v-9b6009a0] {
         width: 100%
+        object-fit: cover;
     }
     </style>
     <style type="text/css">.intro-blend-wrap[data-v-4fe70a99] {
@@ -385,23 +391,10 @@
         position: relative;
         width: 100%;
         height: 100%;
-        pointer-events: none
+        pointer-events: none;
+        object-fit: cover;
     }
 
-    .intro-blend-video[data-v-4fe70a99] {
-        display: none;
-        position: absolute;
-        mix-blend-mode: screen;
-        left: 0;
-        top: 0;
-        width: 100%
-    }
-
-    @supports (display:grid) {
-        .intro-blend-video[data-v-4fe70a99] {
-            display: block
-        }
-    }
     </style>
     <style type="text/css">
 
@@ -769,8 +762,16 @@
     }
 
     </style>
+    <!--첫 번째 슬라이드쇼----------------------------------------->
+    <link href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-
+    <script>
+        $(document).ready(function () {
+            $('.slider').bxSlider();
+        });
+    </script>
 </head>
 
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false" style="touch-action: pan-y;">
@@ -787,14 +788,25 @@
                     <div class="date-place" data-v-9b6009a0="">2021년 4월 18일 12시34분</div>
                 </div>
                 <div class="photo-wrap" data-v-9b6009a0="">
-                    <div class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="">
-                        <img class="intro-blend-image"
+                    <div class="intro-blend-wrap photo slider" data-v-4fe70a99="" data-v-9b6009a0="">
+                        <img alt="이미지 표시 안됨!!!"
+                             class="intro-blend-image"
                              data-v-4fe70a99=""
                              height="853"
-                             src="data:image/jpeg;base64, {img_50d_binary}"
-                             alt="이미지 표시 안됨!!!"
+                             src="http://cdn.econovill.com/news/photo/201812/353683_236958_5647.jpg"
                              width="1280">
-
+                        <img alt="이미지 표시 안됨!!!"
+                             class="intro-blend-image"
+                             data-v-4fe70a99=""
+                             height="853"
+                             src="http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg"
+                             width="1280">
+                        <img alt="이미지 표시 안됨!!!"
+                             class="intro-blend-image"
+                             data-v-4fe70a99=""
+                             height="853"
+                             src="https://img.hankyung.com/photo/201812/BD.18572294.1.jpg"
+                             width="1280">
                     </div>
                 </div>
             </div>
@@ -816,7 +828,7 @@
                     </div>
 
                     <div class="image fade-in" style="opacity: 1; transform: translate(0px, 0px);">
-                        <img src="${메인사진2}">
+                        <img src="https://post-phinf.pstatic.net/MjAxOTA2MDJfMTc1/MDAxNTU5NDY4MjA5ODM5.w_Isvf0JDT3kWxsvx_Vuo0tQgkpbWKNQXnz1vr5Py9Ag.MnS4aw7jMsIqwDxJnbWqqzjEnTTdxHM7INTljnro8YIg.JPEG/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2019-06-02_%EC%98%A4%ED%9B%84_6.14.20.jpg?type=w1200">
                     </div>
 
                     <div class="members-wrap fade-in" style="opacity: 1; transform: translate(0px, 0px);">
@@ -833,77 +845,30 @@
                         <div>
                             시기별 일자
                         </div>
-                        <div class="gallery-container fade-in" style="opacity: 1; transform: translate(0px, 0px);">
-                            <div>
-                                <div class="carousel-wrap" style="">
-                                    <div class="carousel-arrow" style="left: 0px;">
-                                        <svg id="Capa_1" version="1.1" viewBox="0 0 55.753 55.753"
-                                             x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g><path d="M12.745,23.915c0.283-0.282,0.59-0.52,0.913-0.727L35.266,1.581c2.108-2.107,5.528-2.108,7.637,0.001
-            c2.109,2.108,2.109,5.527,0,7.637L24.294,27.828l18.705,18.706c2.109,2.108,2.109,5.526,0,7.637
-            c-1.055,1.056-2.438,1.582-3.818,1.582s-2.764-0.526-3.818-1.582L13.658,32.464c-0.323-0.207-0.632-0.445-0.913-0.727
-            c-1.078-1.078-1.598-2.498-1.572-3.911C11.147,26.413,11.667,24.994,12.745,23.915z"></path></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g></svg>
-                                    </div>
-                                    <div class="carousel-arrow" style="right: 0px;">
-                                        <svg id="Capa_1" version="1.1" viewBox="0 0 55.752 55.752"
-                                             x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><g><path d="M43.006,23.916c-0.28-0.282-0.59-0.52-0.912-0.727L20.485,1.581c-2.109-2.107-5.527-2.108-7.637,0.001
-            c-2.109,2.108-2.109,5.527,0,7.637l18.611,18.609L12.754,46.535c-2.11,2.107-2.11,5.527,0,7.637c1.055,1.053,2.436,1.58,3.817,1.58
-            s2.765-0.527,3.817-1.582l21.706-21.703c0.322-0.207,0.631-0.444,0.912-0.727c1.08-1.08,1.598-2.498,1.574-3.912
-            C44.605,26.413,44.086,24.993,43.006,23.916z"></path></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g>
-                                            <g></g></svg>
-                                    </div>
-                                    <div>
-                                        <div class="eg-flick-viewport"
-                                             style="position: relative; z-index: 100; overflow: hidden; min-height: 100%; width: 100%; touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-drag: none; height: 279px;">
-                                            <div class="eg-flick-camera"
-                                                 style="width: 100%; height: 100%; will-change: transform; transform: translate3d(0px, 0px, 0px);">
-                                                <div class="carousel-card eg-flick-panel"
-                                                     style="height: 279px; background: rgba(0, 0, 0, 0); left: 0px; position: absolute;">
-                                                    <div>
-                                                        <img src="${업로드된 아기사진들}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dot-wrap">
-                                    <div class="dot-indicator"></div>
-                                    <div class="dot-indicator"></div>
-                                    <div active="true" class="dot-indicator"></div>
-                                </div>
+                        <!--       두번째 슬라이드쇼-->
+                        <div class="photo-wrap" data-v-9b6009a0="">
+                            <div class="intro-blend-wrap photo slider" data-v-4fe70a99="" data-v-9b6009a0="">
+                                <img alt="이미지 표시 안됨!!!"
+                                     class="intro-blend-image"
+                                     data-v-4fe70a99=""
+                                     height="853"
+                                     src="http://cdn.econovill.com/news/photo/201812/353683_236958_5647.jpg"
+                                     width="1280">
+                                <img alt="이미지 표시 안됨!!!"
+                                     class="intro-blend-image"
+                                     data-v-4fe70a99=""
+                                     height="853"
+                                     src="http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg"
+                                     width="1280">
+                                <img alt="이미지 표시 안됨!!!"
+                                     class="intro-blend-image"
+                                     data-v-4fe70a99=""
+                                     height="853"
+                                     src="https://img.hankyung.com/photo/201812/BD.18572294.1.jpg"
+                                     width="1280">
                             </div>
                         </div>
+                        <!---      두번째 슬라이드쇼-->
                     </div>
                 </div>
                 <!--                <div>-->

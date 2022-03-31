@@ -63,8 +63,7 @@ def image_save():
     return jsonify({'msg': '저장이 완료되었습니다!'})
 
     item = photos.find_one({'img_50d': photo_50d_img})
-    fs = gridfs.GridFS(db)
-    img_50d_binary = fs.get(item['img_50d'])
+    img_50d_binary = fs.get(item['img_50d']).read()
     base64_img_50d = codecs.encode(img_50d_binary.read(), 'base64')
     decoded_img_50d = base64_img_50d.decode('utf-8')
     item['img_50d'] = decoded_img_50d
