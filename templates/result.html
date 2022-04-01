@@ -770,6 +770,23 @@
 
     </style>
 
+    <script>
+        $(document).ready(function () {
+            getPhoto()
+        })
+        function getPhoto() {
+            $.ajax({
+                type: 'GET',
+                url: '/make_photo',
+                data: {},
+                success: function(response) {
+                    photos = response[Object.keys(response)[1]]
+                    console.log(photos)
+                }
+            })
+
+        }
+    </script>
 
 </head>
 

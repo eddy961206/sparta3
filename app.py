@@ -1,20 +1,8 @@
+import os
+
 from flask import Flask, render_template, request, jsonify
-import gridfs
-# import boto3
-# from botocore.client import Config
-#
-#
-# def handle_upload_img(f): # f = 파일명
-#     data = open('plist/static/plist/img/artist/'+f+'.jpg', 'rb')
-#     # '로컬의 해당파일경로'+ 파일명 + 확장자
-#     s3 = boto3.resource(
-#         's3',
-#         aws_access_key_id=ACCESS_KEY_ID,
-#         aws_secret_access_key=ACCESS_SECRET_KEY,
-#         config=Config(signature_version='s3v4')
-#     )
-#     s3.Bucket(BUCKET_NAME).put_object(
-#         Key=f, Body=data, ContentType='image/jpg')
+
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -22,11 +10,9 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.baby_photo
 
-
 @app.route('/')
 def main():
     return render_template("main.html")
-
 
 @app.route('/make')
 def make():
@@ -36,9 +22,44 @@ def make():
 def result():
     return render_template("result.html")
 
+@app.route("/make_photo", methods=['GET', 'POST'])
+def image_save():
+    if request.method == 'POST':
+        photo_1d = request.files['photo1d']
+        photo_50d = request.files['photo50d']
+        photo_100d = request.files['photo100d']
+        photo_4mth = request.files['photo4mth']
+        photo_5mth = request.files['photo5mth']
+        photo_6mth = request.files['photo6mth']
+        photo_7mth = request.files['photo7mth']
+        photo_8mth = request.files['photo8mth']
+        photo_9mth = request.files['photo9mth']
+        photo_10mth = request.files['photo10mth']
+        photo_11mth = request.files['photo11mth']
+        photo_12mth = request.files['photo12mth']
+        photo_1d.save('./static/' + secure_filename(photo_1d.filename))
+        photo_50d.save('./static/' + secure_filename(photo_50d.filename))
+        photo_100d.save('./static/' + secure_filename(photo_100d.filename))
+        photo_4mth.save('./static/' + secure_filename(photo_4mth.filename))
+        photo_5mth.save('./static/' + secure_filename(photo_5mth.filename))
+        photo_6mth.save('./static/' + secure_filename(photo_6mth.filename))
+        photo_7mth.save('./static/' + secure_filename(photo_7mth.filename))
+        photo_8mth.save('./static/' + secure_filename(photo_8mth.filename))
+        photo_9mth.save('./static/' + secure_filename(photo_9mth.filename))
+        photo_10mth.save('./static/' + secure_filename(photo_10mth.filename))
+        photo_11mth.save('./static/' + secure_filename(photo_11mth.filename))
+        photo_12mth.save('./static/' + secure_filename(photo_12mth.filename))
 
 
-@app.route("/make", methods=['POST'])
+        return 'uploads 디렉토리 -> 파일 업로드 성공!'
+
+    else:
+        photos = os.listdir('./static/')
+        return jsonify('all_photos', photos)
+
+
+
+@app.route('/upload', methods=['POST'])
 def upload():
     babyname = request.form['baby_name']
     mothername = request.form['mother_name']
@@ -46,70 +67,7 @@ def upload():
     birthyear = request.form['birth_year']
     birthmonth = request.form['birth_month']
     birthday = request.form['birth_day']
-
-    doc = {
-        'babyName': babyname,
-        'motherName': mothername,
-        'fatherName': fathername,
-        'birthYear': birthyear,
-        'birthMonth': birthmonth,
-        'birthDay': birthday,
-    }
-
-    db.contents.insert_one(doc)
-
-@app.route("/make_photo", methods=['POST'])
-def image_save():
-    photo_1d = request.files['photo1d']
-    photo_50d = request.files['photo50d']
-    photo_100d = request.files['photo100d']
-    photo_4mth = request.files['photo4mth']
-    photo_5mth = request.files['photo5mth']
-    photo_6mth = request.files['photo6mth']
-    photo_7mth = request.files['photo7mth']
-    photo_8mth = request.files['photo8mth']
-    photo_9mth = request.files['photo9mth']
-    photo_10mth = request.files['photo10mth']
-    photo_11mth = request.files['photo11mth']
-    photo_12mth = request.files['photo12mth']
-    fs = gridfs.GridFS(db)
-    photo_1d_img = fs.put(photo_1d)
-    photo_50d_img = fs.put(photo_50d)
-    photo_100d_img = fs.put(photo_100d)
-    photo_4mth_img = fs.put(photo_4mth)
-    photo_5mth_img = fs.put(photo_5mth)
-    photo_6mth_img = fs.put(photo_6mth)
-    photo_7mth_img = fs.put(photo_7mth)
-    photo_8mth_img = fs.put(photo_8mth)
-    photo_9mth_img = fs.put(photo_9mth)
-    photo_10mth_img = fs.put(photo_10mth)
-    photo_11mth_img = fs.put(photo_11mth)
-    photo_12mth_img = fs.put(photo_12mth)
-    db.photos.insert_one({'img_1d': photo_1d_img})
-    db.photos.insert_one({'img_50d': photo_50d_img})
-    db.photos.insert_one({'img_100d': photo_100d_img})
-    db.photos.insert_one({'img_4mth': photo_4mth_img})
-    db.photos.insert_one({'img_5mth': photo_5mth_img})
-    db.photos.insert_one({'img_6mth': photo_6mth_img})
-    db.photos.insert_one({'img_7mth': photo_7mth_img})
-    db.photos.insert_one({'img_8mth': photo_8mth_img})
-    db.photos.insert_one({'img_9mth': photo_9mth_img})
-    db.photos.insert_one({'img_10mth': photo_10mth_img})
-    db.photos.insert_one({'img_11mth': photo_11mth_img})
-    db.photos.insert_one({'img_12mth': photo_12mth_img})
-    return jsonify({'msg': '저장에 성공했습니다.'})
-
-
-
-@app.route("/make2", methods=['POST'])
-def imagesave():
-    imgtest = request.files['imagetest']
-    fs = gridfs.GridFS(db)
-    test_img_id = fs.put(imgtest)
-    db.test.insert_one({'img': test_img_id})
-    return jsonify({'msg': '저장에 성공했습니다.'})
-
-
+    db.contents.insert_one({'babyName': babyname, 'motherName': mothername, 'fatherName': fathername, 'birthYear': birthyear, 'birthMonth': birthmonth, 'birthDay': birthday})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0',port=5000, debug=True)
