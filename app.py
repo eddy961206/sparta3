@@ -1,7 +1,5 @@
-import codecs
 
 from flask import Flask, render_template, request, jsonify
-import gridfs
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -9,7 +7,6 @@ app = Flask(__name__)
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.baby_photo
-fs = gridfs.GridFS(db)
 
 @app.route('/')
 def main():
