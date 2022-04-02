@@ -26,11 +26,9 @@ def result():
     return render_template("result.html")
 
 
-<<<<<<< HEAD
-@app.route("/make_photo", methods=['get', 'POST'])
-=======
+
 @app.route("/make_photo", methods=['GET', 'POST'])
->>>>>>> origin/전형준브랜치
+
 def image_save():
     if request.method == 'POST':
         newdata = list(db.contents.find({}))[-1]
@@ -53,48 +51,27 @@ def image_save():
         photo_10mth = request.files['photo10mth']
         photo_11mth = request.files['photo11mth']
         photo_12mth = request.files['photo12mth']
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/전형준브랜치
-        photo_present.save(newfolder + 'photo_present' + secure_filename(photo_present.filename))
-        photo_family.save(newfolder + 'photo_family' + secure_filename(photo_family.filename))
-        photo_1d.save(newfolder + 'photo_1d' + secure_filename(photo_1d.filename))
-        photo_50d.save(newfolder + 'photo_50d' + secure_filename(photo_50d.filename))
-        photo_100d.save(newfolder + 'photo_100d' + secure_filename(photo_100d.filename))
-        photo_4mth.save(newfolder + 'photo_4mth' + secure_filename(photo_4mth.filename))
-        photo_5mth.save(newfolder + 'photo_5mth' + secure_filename(photo_5mth.filename))
-        photo_6mth.save(newfolder + 'photo_6mth' + secure_filename(photo_6mth.filename))
-        photo_7mth.save(newfolder + 'photo_7mth' + secure_filename(photo_7mth.filename))
-        photo_8mth.save(newfolder + 'photo_8mth' + secure_filename(photo_8mth.filename))
-        photo_9mth.save(newfolder + 'photo_9mth' + secure_filename(photo_9mth.filename))
-        photo_10mth.save(newfolder + 'photo_10mth' + secure_filename(photo_10mth.filename))
-        photo_11mth.save(newfolder + 'photo_11mth' + secure_filename(photo_11mth.filename))
-        photo_12mth.save(newfolder + 'photo_12mth' + secure_filename(photo_12mth.filename))
-<<<<<<< HEAD
-        return 'uploads 디렉토리 -> 파일 업로드 성공!'
-
-=======
-        photo_1d.save(newfolder + secure_filename(photo_1d.filename))
-        photo_50d.save(newfolder + secure_filename(photo_50d.filename))
-        photo_100d.save(newfolder + secure_filename(photo_100d.filename))
-        photo_4mth.save(newfolder + secure_filename(photo_4mth.filename))
-        photo_5mth.save(newfolder + secure_filename(photo_5mth.filename))
-        photo_6mth.save(newfolder + secure_filename(photo_6mth.filename))
-        photo_7mth.save(newfolder + secure_filename(photo_7mth.filename))
-        photo_8mth.save(newfolder + secure_filename(photo_8mth.filename))
-        photo_9mth.save(newfolder + secure_filename(photo_9mth.filename))
-        photo_10mth.save(newfolder + secure_filename(photo_10mth.filename))
-        photo_11mth.save(newfolder + secure_filename(photo_11mth.filename))
-        photo_12mth.save(newfolder + secure_filename(photo_12mth.filename))
-        return 'uploads 디렉토리 -> 파일 업로드 성공!'
+        photo_present.save(newfolder + 'a_photo_present' + secure_filename(photo_present.filename))
+        photo_family.save(newfolder + 'b_photo_family' + secure_filename(photo_family.filename))
+        photo_1d.save(newfolder + 'c_photo_1d' + secure_filename(photo_1d.filename))
+        photo_50d.save(newfolder + 'd_photo_50d' + secure_filename(photo_50d.filename))
+        photo_100d.save(newfolder + 'e_photo_100d' + secure_filename(photo_100d.filename))
+        photo_4mth.save(newfolder + 'f_photo_4mth' + secure_filename(photo_4mth.filename))
+        photo_5mth.save(newfolder + 'g_photo_5mth' + secure_filename(photo_5mth.filename))
+        photo_6mth.save(newfolder + 'h_photo_6mth' + secure_filename(photo_6mth.filename))
+        photo_7mth.save(newfolder + 'i_photo_7mth' + secure_filename(photo_7mth.filename))
+        photo_8mth.save(newfolder + 'j_photo_8mth' + secure_filename(photo_8mth.filename))
+        photo_9mth.save(newfolder + 'k_photo_9mth' + secure_filename(photo_9mth.filename))
+        photo_10mth.save(newfolder + 'l_photo_10mth' + secure_filename(photo_10mth.filename))
+        photo_11mth.save(newfolder + 'm_photo_11mth' + secure_filename(photo_11mth.filename))
+        photo_12mth.save(newfolder + 'n_photo_12mth' + secure_filename(photo_12mth.filename))
 
     else:
         newdata = list(db.contents.find({}))[-1]
         _id = newdata['_id']
         photos = os.listdir('./static/' + str(_id) + '/')
         return jsonify({'all_photos': photos, 'id': str(_id)})
->>>>>>> origin/전형준브랜치
 
 @app.route('/upload', methods=['POST'])
 def upload():
