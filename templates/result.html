@@ -781,7 +781,15 @@
                 data: {},
                 success: function(response) {
                     photos = response[Object.keys(response)[1]]
-                    console.log(photos)
+                    for(let i = 0; i < photos.length; i++) {
+                        slides = $('.carousel-card > div')
+                        slide = `
+
+                                    <img src="../static/${photos[i]}">
+
+                        `
+                        slides.append(slide)
+                    }
                 }
             })
 
@@ -908,9 +916,7 @@
                                                  style="width: 100%; height: 100%; will-change: transform; transform: translate3d(0px, 0px, 0px);">
                                                 <div class="carousel-card eg-flick-panel"
                                                      style="height: 279px; background: rgba(0, 0, 0, 0); left: 0px; position: absolute;">
-                                                    <div>
-                                                        <img src="${업로드된 아기사진들}">
-                                                    </div>
+                                                        <div></div>
                                                 </div>
                                             </div>
                                         </div>

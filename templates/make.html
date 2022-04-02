@@ -87,47 +87,9 @@
         display: block;
       }
 
-
-
     </style>
 
     <script>
-
-      function upload() {
-        const imageInput = $("#imageInput")[0];
-        // 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.
-        console.log("imageInput: ", imageInput.files)
-
-        if (imageInput.files.length === 0) {
-          alert("파일은 선택해주세요");
-          return;
-        }
-
-        const formData = new FormData();
-        formData.append("image", imageInput.files[0]);
-
-
-        $.ajax({
-          type: "POST",
-          url: "/upload",
-          processData: false,
-          contentType: false,
-          data: formData,
-          success: function (response) {
-            const message = response.data.values[0];
-            console.log("message: ", message)
-            $("#resultUploadPath").text(message.uploadFilePath)
-          },
-          err: function (err) {
-            console.log("err:", err)
-          }
-        })
-      }
-
-
-
-
-
 
 
       function textsave() {
@@ -139,10 +101,9 @@
         let birthmonth = $('#birthmonth').val()
         let birthday = $('#birthday').val()
 
-
         $.ajax({
           type: "POST",
-          url: "/make",
+          url: "/upload",
           data: {
             baby_name: babyname,
             mother_name: mothername,
@@ -153,10 +114,10 @@
           },
           success: function (response) {
 
+
           }
         })
       }
-
 
       function savebtn() {
         Swal.fire({
@@ -186,7 +147,7 @@
 <body>
   <div class="backcolor">
     <div class="wrap">
-      <h1>우리 아이의 사진첩을 만들어보아요</h1>
+      <h1 style="color: #5cb9a6">우리 아이의 사진첩을 만들어보아요</h1>
       <div class="wrap2">
         <div class="family-info container">
           <h5 style="font-weight: bold">이름을 적어주세요</h5>
@@ -280,7 +241,9 @@
         <h5 style="font-weight: bold">사진을 넣어주세요</h5>
         <div class="baby-img"></div>
 
-        <form action="/make_photo" method="post" id="uploadForm" enctype="multipart/form-data">
+        <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
+
+        <form action="/make_photo" method="post" enctype="multipart/form-data" target="iframe1">
           <div class="input-group mb-3">
             <label class="input-group-text bg-primary bg-opacity-25">탄생일</label>
             <input type="file" class="form-control" name="photo1d">
@@ -329,37 +292,16 @@
             <label class="input-group-text bg-primary bg-opacity-75">12개월</label>
             <input type="file" class="form-control" name="photo12mth">
           </div>
+           <button class="btn btn-primary savebtn" onclick="savebtn(),textsave()">
+            저장하기
+          </button>
         </form>
-
-        <!-- Button -->
-
-        <button type="button" class="btn btn-primary savebtn" onclick="savebtn(),textsave()">
-          저장하기
-        </button>
 
       </div>
     </div>
   </div>
 
 
-  <p>
-    이미지 업로드 테스트 창
-  </p>
-  <div>
-    <form action="/make2" method="post" id="uploadForm" enctype="multipart/form-data">
-      <input type="file" name="imagetest" id="imageInput" placeholder="">
-      <input type="submit" class="btn btn-primary btn_location" value="Submit">
-    </form>
-    <hr/>
-<!--    <button onclick="imagesave()">-->
-<!--      업로드-->
-<!--    </button>-->
-    <hr/>
-    <p>
-      업로드결과:
-    </p>
-    <p id="resultUploadPath"></p>
-  </div>
 
 
 </body>
