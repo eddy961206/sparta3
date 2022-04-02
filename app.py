@@ -89,10 +89,6 @@ def read_info():
     return jsonify({'all_info': info})
 
 
-path = 'c:/1/2/3/4/5'
-if not os.path.isdir(path): os.makedirs(path)
-
-
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
