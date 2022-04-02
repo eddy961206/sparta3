@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="059bc4f1-ca4c-4ef3-8253-26050e46b702" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/make.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/make.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/slide_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/slide_test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +118,7 @@
       <workItem from="1648726838043" duration="10367000" />
       <workItem from="1648817912800" duration="1949000" />
       <workItem from="1648822198600" duration="9487000" />
-      <workItem from="1648908995541" duration="3069000" />
+      <workItem from="1648908995541" duration="3654000" />
     </task>
     <servers />
   </component>
@@ -128,6 +126,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/makingchallenge$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1648911867873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/makingchallenge$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1648912651836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
