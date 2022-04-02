@@ -546,8 +546,6 @@
                 url: '/make_photo',
                 data: {},
                 success: function(response) {
-                    {#console.log(response[Object.keys(response)[0]])#}
-                    {#console.log(response[Object.keys(response)[1]])#}
                     photos = response[Object.keys(response)[0]]
                     id= response[Object.keys(response)[1]]
                     for(let i = 0; i < photos.length; i++) {
@@ -624,27 +622,7 @@
                             </div>
                             <div class="photo-wrap" data-v-9b6009a0="">
                                 <div class="intro-blend-wrap photo slider" data-v-4fe70a99="" data-v-9b6009a0="">
-{#                                    <img alt="이미지 표시 안됨!!!"#}
-{#                                         class="intro-blend-image"#}
-{#                                         data-v-4fe70a99=""#}
-{#                                         width="1280"#}
-{#                                         height="853"#}
-{#                                         src="http://cdn.econovill.com/news/photo/201812/353683_236958_5647.jpg"#}
-{#                                    >#}
-{#                                    <img alt="이미지 표시 안됨!!!"#}
-{#                                         class="intro-blend-image"#}
-{#                                         data-v-4fe70a99=""#}
-{#                                         width="1280"#}
-{#                                         height="853"#}
-{#                                         src="http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg"#}
-{#                                    >#}
-{#                                    <img alt="이미지 표시 안됨!!!"#}
-{#                                         class="intro-blend-image"#}
-{#                                         data-v-4fe70a99=""#}
-{#                                         width="1280"#}
-{#                                         height="853"#}
-{#                                         src="https://img.hankyung.com/photo/201812/BD.18572294.1.jpg"#}
-{#                                    >#}
+
                                 </div>
                             </div>
                         </div>
