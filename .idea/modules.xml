@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/baby photo.iml" filepath="$PROJECT_DIR$/.idea/baby photo.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/makingchallenge.iml" filepath="$PROJECT_DIR$/.idea/makingchallenge.iml" />
+>>>>>>> origin/전형준브랜치
     </modules>
   </component>
 </project>
