@@ -770,7 +770,41 @@
     <script>
         $(document).ready(function () {
             $('.slider').bxSlider();
+            familyinfo()
         });
+
+        function familyinfo() {
+            $.ajax({
+                type: "GET",
+                url: "/info",
+                data: {},
+                success: function (response) {
+                    let all_info = response ['all_info']
+                    const lastValue = all_info[all_info.length - 1];
+                    let babyname = lastValue['babyName']
+                    let fathername = lastValue['fatherName']
+                    let mothername = lastValue['motherName']
+
+                    let birthYear = lastValue['birthYear']
+                    let birthMonth = lastValue['birthMonth']
+                    let birthDay = lastValue['birthDay']
+                    let birthHour = lastValue['birthHour']
+                    let birthMinute = lastValue['birthMinute']
+
+                    let temp_html = ` <div class="baby" data-v-9b6009a0="">${babyname}</div>
+                    <div class="papa" data-v-9b6009a0="">${fathername}</div>
+                    <div class="and" data-v-9b6009a0="">&amp;</div>
+                    <div class="mama" data-v-9b6009a0="">${mothername}</div>
+                    <div class="date-place" data-v-9b6009a0="">${birthYear}년 ${birthMonth}월 ${birthDay}일 ${birthHour}시${birthMinute}분</div>`
+                    $('#familyinfo').append(temp_html)
+
+                    let tmep_himl2 =`${fathername} <span>·</span> ${mothername}
+                            <span class="relation"><span>의</span> <span>아기</span></span>
+                            <span>${babyname}</span>`
+                    $('#familyname').append(tmep_himl2)
+                }
+            })
+        }
     </script>
 </head>
 
@@ -780,12 +814,8 @@
         <div class="inner">
             <div></div>
             <div class="mcard-intro" data-v-9b6009a0="">
-                <div class="title" data-v-9b6009a0="">
-                    <div class="baby" data-v-9b6009a0="">아기이름</div>
-                    <div class="papa" data-v-9b6009a0="">아빠이름</div>
-                    <div class="and" data-v-9b6009a0="">&amp;</div>
-                    <div class="mama" data-v-9b6009a0="">엄마이름</div>
-                    <div class="date-place" data-v-9b6009a0="">2021년 4월 18일 12시34분</div>
+                <div id="familyinfo" class="title" data-v-9b6009a0="">
+
                 </div>
                 <div class="photo-wrap" data-v-9b6009a0="">
                     <div class="intro-blend-wrap photo slider" data-v-4fe70a99="" data-v-9b6009a0="">
@@ -834,10 +864,8 @@
                     </div>
 
                     <div class="members-wrap fade-in" style="opacity: 1; transform: translate(0px, 0px);">
-                        <div>
-                            아빠이름 <span>·</span> 엄마이름
-                            <span class="relation"><span>의</span> <span>아기</span></span>
-                            <span>아기이름</span>
+                        <div id="familyname">
+
                         </div>
                     </div>
                 </div>

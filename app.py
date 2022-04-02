@@ -1,31 +1,35 @@
-import codecs
-
 from flask import Flask, render_template, request, jsonify
-import gridfs
+
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
 from pymongo import MongoClient
+
 client = MongoClient('localhost', 27017)
 db = client.baby_photo
-fs = gridfs.GridFS(db)
+
 
 @app.route('/')
 def main():
     return render_template("main.html")
 
+
 @app.route('/make')
 def make():
     return render_template("make.html")
+
 
 @app.route('/result')
 def result():
     return render_template("result.html")
 
+
 @app.route("/make_photo", methods=['get', 'POST'])
 def image_save():
     if request.method == 'POST':
+        photo_present = request.files['photopresent']
+        photo_family = request.files['photofamily']
         photo_1d = request.files['photo1d']
         photo_50d = request.files['photo50d']
         photo_100d = request.files['photo100d']
@@ -38,6 +42,9 @@ def image_save():
         photo_10mth = request.files['photo10mth']
         photo_11mth = request.files['photo11mth']
         photo_12mth = request.files['photo12mth']
+
+        photo_present.save('./static/' + secure_filename(photo_present.filename))
+        photo_family.save('./static/' + secure_filename(photo_family.filename))
         photo_1d.save('./static/' + secure_filename(photo_1d.filename))
         photo_50d.save('./static/' + secure_filename(photo_50d.filename))
         photo_100d.save('./static/' + secure_filename(photo_100d.filename))
@@ -53,7 +60,6 @@ def image_save():
         return 'uploads 디렉토리 -> 파일 업로드 성공!'
 
 
-
 @app.route('/upload', methods=['POST'])
 def upload():
     babyname = request.form['baby_name']
@@ -62,7 +68,19 @@ def upload():
     birthyear = request.form['birth_year']
     birthmonth = request.form['birth_month']
     birthday = request.form['birth_day']
-    db.contents.insert_one({'babyName': babyname, 'motherName': mothername, 'fatherName': fathername, 'birthYear': birthyear, 'birthMonth': birthmonth, 'birthDay': birthday})
+    birthhour = request.form['birth_hour']
+    birthminute = request.form['birth_minute']
+
+    db.contents.insert_one(
+        {'babyName': babyname, 'motherName': mothername, 'fatherName': fathername, 'birthYear': birthyear,
+         'birthMonth': birthmonth, 'birthDay': birthday,'birthHour':birthhour, 'birthMinute': birthminute })
+
+
+@app.route('/info', methods=['GET'])
+def read_info():
+    info = list(db.contents.find({}, {'_id': False}))
+    return jsonify({'all_info': info})
+
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)

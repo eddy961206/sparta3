@@ -68,7 +68,6 @@
         margin-bottom: 20px;
       }
       .birthday{
-        width: 325px;
         margin-bottom: 20px;
       }
 
@@ -100,6 +99,8 @@
         let birthyear = $('#birthyear').val()
         let birthmonth = $('#birthmonth').val()
         let birthday = $('#birthday').val()
+        let birthhour = $('#birthhour').val()
+        let birthminute = $('#birthminute').val()
 
         $.ajax({
           type: "POST",
@@ -110,7 +111,9 @@
             father_name: fathername,
             birth_year: birthyear,
             birth_month: birthmonth,
-            birth_day: birthday
+            birth_day: birthday,
+            birth_hour: birthhour,
+            birth_minute: birthminute
           },
           success: function (response) {
 
@@ -120,27 +123,15 @@
       }
 
       function savebtn() {
-        Swal.fire({
-          title: '저장을 완료하시겠습니까?',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: '저장하기',
-          cancelButtonText: '돌아가기'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire({
+          Swal.fire({
               icon: 'success',
               title: '저장이 완료되었습니다.',
               showConfirmButton: false,
               timer: 1500
-            })
-            setTimeout(function () {
+          })
+          setTimeout(function () {
               location.href = '/result';
-            }, 1500);
-          }
-        })
+          }, 1500);
       }
     </script>
 </head>
@@ -171,79 +162,181 @@
                    aria-describedby="basic-addon1">
           </div>
         </div>
-        <div class="birthday container">
-          <h5 style="font-weight: bold">아기 탄생일</h5>
-          <div class="row">
-            <div class="col">
-              <select id="birthyear" class="form-select">
-                <option>년도</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-              </select>
-            </div>
-            <div class="col">
-              <select id="birthmonth" class="form-select">
-                <option>월</option>
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-            </div>
-            <div class="col">
-              <select id="birthday" class="form-select">
-                <option>일</option>
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-              </select>
-            </div>
-          </div>
+          <div class="birthday container">
+              <h5 style="font-weight: bold">아기 탄생일</h5>
+              <div class="row">
+                  <div class="col">
+                      <select id="birthyear" class="form-select">
+                          <option>년도</option>
+                          <option value="2019">2019</option>
+                          <option value="2020">2020</option>
+                          <option value="2021">2021</option>
+                          <option value="2022">2022</option>
+                      </select>
+                  </div>
+                  <div class="col">
+                      <select id="birthmonth" class="form-select">
+                          <option>월</option>
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                          <option value="05">05</option>
+                          <option value="06">06</option>
+                          <option value="07">07</option>
+                          <option value="08">08</option>
+                          <option value="09">09</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                      </select>
+                  </div>
+                  <div class="col">
+                      <select id="birthday" class="form-select">
+                          <option>일</option>
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                          <option value="05">05</option>
+                          <option value="06">06</option>
+                          <option value="07">07</option>
+                          <option value="08">08</option>
+                          <option value="09">09</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
+                          <option value="31">31</option>
+                      </select>
+                  </div>
+                  <div class="col">
+                      <select id="birthhour" class="form-select">
+                          <option>시</option>
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                          <option value="05">05</option>
+                          <option value="06">06</option>
+                          <option value="07">07</option>
+                          <option value="08">08</option>
+                          <option value="09">09</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                      </select>
+                  </div>
+                  <div class="col">
+                      <select id="birthminute" class="form-select">
+                          <option>분</option>
+                          <option value="00">00</option>
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                          <option value="05">05</option>
+                          <option value="06">06</option>
+                          <option value="07">07</option>
+                          <option value="08">08</option>
+                          <option value="09">09</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
+                          <option value="31">31</option>
+                          <option value="32">32</option>
+                          <option value="33">33</option>
+                          <option value="34">34</option>
+                          <option value="35">35</option>
+                          <option value="36">36</option>
+                          <option value="37">37</option>
+                          <option value="38">38</option>
+                          <option value="39">39</option>
+                          <option value="40">40</option>
+                          <option value="41">41</option>
+                          <option value="42">42</option>
+                          <option value="43">43</option>
+                          <option value="44">44</option>
+                          <option value="45">45</option>
+                          <option value="46">46</option>
+                          <option value="47">47</option>
+                          <option value="48">48</option>
+                          <option value="49">49</option>
+                          <option value="50">50</option>
+                          <option value="51">51</option>
+                          <option value="52">52</option>
+                          <option value="53">53</option>
+                          <option value="54">54</option>
+                          <option value="55">55</option>
+                          <option value="56">56</option>
+                          <option value="57">57</option>
+                          <option value="58">58</option>
+                          <option value="59">59</option>
+                      </select>
+                  </div>
+              </div>
         </div>
         <h5 style="font-weight: bold">사진을 넣어주세요</h5>
         <div class="baby-img"></div>
 
-        <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
+
 
         <form action="/make_photo" method="post" enctype="multipart/form-data" target="iframe1">
+          <div class="input-group mb-3">
+              <label class="input-group-text bg-warning bg-opacity-50">현재사진</label>
+              <input type="file" class="form-control" name="photopresent">
+          </div>
+          <div class="input-group mb-3">
+              <label class="input-group-text bg-warning bg-opacity-50">가족사진</label>
+              <input type="file" class="form-control" name="photofamily">
+          </div>
           <div class="input-group mb-3">
             <label class="input-group-text bg-primary bg-opacity-25">탄생일</label>
             <input type="file" class="form-control" name="photo1d">
@@ -300,9 +393,6 @@
       </div>
     </div>
   </div>
-
-
-
 
 </body>
 </html>
