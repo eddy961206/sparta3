@@ -30,7 +30,7 @@ def result():
 def image_save():
     # id값 받아오는 중복 부분 중복 제거
     newdata = list(db.contents.find({}))[-1]
-    _id = newdata['_id']
+    _id = newdata['email']
     if request.method == 'POST':
         current_path = './static/'
         if not os.path.isdir(current_path + "/" + str(_id)): os.makedirs(current_path + "/" + str(_id))
@@ -81,10 +81,10 @@ def image_save():
     else: # if request.method == 'GET':
         photos = os.listdir('./static/' + str(_id) + '/') # static/id로 만든 폴더 안의 파일 리스트를 photos 변수에 저장
         return jsonify({'all_photos': photos, 'id': str(_id)}) # photos 변수에 담긴 파일리스트와 id값을 함께 json 형태로 전달
-# /*쓸모없는 주석(지워야 함)*/
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    email = request.form['email']
     babyname = request.form['baby_name']
     mothername = request.form['mother_name']
     fathername = request.form['father_name']
@@ -96,7 +96,7 @@ def upload():
 
     db.contents.insert_one(
         {'babyName': babyname, 'motherName': mothername, 'fatherName': fathername, 'birthYear': birthyear,
-         'birthMonth': birthmonth, 'birthDay': birthday,'birthHour':birthhour, 'birthMinute': birthminute })
+         'birthMonth': birthmonth, 'birthDay': birthday,'birthHour':birthhour, 'birthMinute': birthminute, 'email': email })
 
 
 @app.route('/info', methods=['GET'])
