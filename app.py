@@ -30,9 +30,9 @@ def result():
 @app.route("/make_photo", methods=['GET', 'POST'])
 
 def image_save():
+    newdata = list(db.contents.find({}))[-1]
+    _id = newdata['_id']
     if request.method == 'POST':
-        newdata = list(db.contents.find({}))[-1]
-        _id = newdata['_id']
         current_path = './static/'
         if not os.path.isdir(current_path + "/" + str(_id)): os.makedirs(current_path + "/" + str(_id))
         newfolder = current_path + "/" + str(_id) + "/"
@@ -51,7 +51,10 @@ def image_save():
         photo_10mth = request.files['photo10mth']
         photo_11mth = request.files['photo11mth']
         photo_12mth = request.files['photo12mth']
+<<<<<<< HEAD
 
+=======
+>>>>>>> efcc9280ed313995f32307901844639bb27fd967
         photo_present.save(newfolder + 'a_photo_present' + secure_filename(photo_present.filename))
         photo_family.save(newfolder + 'b_photo_family' + secure_filename(photo_family.filename))
         photo_1d.save(newfolder + 'c_photo_1d' + secure_filename(photo_1d.filename))
@@ -66,10 +69,24 @@ def image_save():
         photo_10mth.save(newfolder + 'l_photo_10mth' + secure_filename(photo_10mth.filename))
         photo_11mth.save(newfolder + 'm_photo_11mth' + secure_filename(photo_11mth.filename))
         photo_12mth.save(newfolder + 'n_photo_12mth' + secure_filename(photo_12mth.filename))
+<<<<<<< HEAD
+=======
+        photo_1d.save(newfolder + secure_filename(photo_1d.filename))
+        photo_50d.save(newfolder + secure_filename(photo_50d.filename))
+        photo_100d.save(newfolder + secure_filename(photo_100d.filename))
+        photo_4mth.save(newfolder + secure_filename(photo_4mth.filename))
+        photo_5mth.save(newfolder + secure_filename(photo_5mth.filename))
+        photo_6mth.save(newfolder + secure_filename(photo_6mth.filename))
+        photo_7mth.save(newfolder + secure_filename(photo_7mth.filename))
+        photo_8mth.save(newfolder + secure_filename(photo_8mth.filename))
+        photo_9mth.save(newfolder + secure_filename(photo_9mth.filename))
+        photo_10mth.save(newfolder + secure_filename(photo_10mth.filename))
+        photo_11mth.save(newfolder + secure_filename(photo_11mth.filename))
+        photo_12mth.save(newfolder + secure_filename(photo_12mth.filename))
+        return 'uploads 디렉토리 -> 파일 업로드 성공!'
+>>>>>>> efcc9280ed313995f32307901844639bb27fd967
 
     else:
-        newdata = list(db.contents.find({}))[-1]
-        _id = newdata['_id']
         photos = os.listdir('./static/' + str(_id) + '/')
         return jsonify({'all_photos': photos, 'id': str(_id)})
 
