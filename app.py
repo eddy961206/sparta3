@@ -81,7 +81,7 @@ def image_save():
     else: # if request.method == 'GET':
         photos = os.listdir('./static/' + str(_id) + '/') # static/id로 만든 폴더 안의 파일 리스트를 photos 변수에 저장
         return jsonify({'all_photos': photos, 'id': str(_id)}) # photos 변수에 담긴 파일리스트와 id값을 함께 json 형태로 전달
-# /*쓸모없는 주석(지워야 함)*/
+
 
 @app.route('/upload', methods=['POST'])
 def upload():

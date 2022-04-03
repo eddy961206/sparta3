@@ -480,11 +480,310 @@
             vertical-align: middle
         }
 
+        /*   새로운 슬라이더 */
+        @keyframes tonext {
+            75% {
+                left: 0;
+            }
+            95% {
+                left: 100%;
+            }
+            98% {
+                left: 100%;
+            }
+            99% {
+                left: 0;
+            }
+        }
+
+        @keyframes tostart {
+            75% {
+                left: 0;
+            }
+            95% {
+                left: -300%;
+            }
+            98% {
+                left: -300%;
+            }
+            99% {
+                left: 0;
+            }
+        }
+
+        @keyframes snap {
+            96% {
+                scroll-snap-align: center;
+            }
+            97% {
+                scroll-snap-align: none;
+            }
+            99% {
+                scroll-snap-align: none;
+            }
+            100% {
+                scroll-snap-align: center;
+            }
+        }
+
+        body {
+            max-width: 37.5rem;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            scrollbar-color: transparent transparent; /* thumb and track color */
+            scrollbar-width: 0px;
+        }
+
+        *::-webkit-scrollbar {
+            width: 0;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background: transparent;
+            border: none;
+        }
+
+        * {
+            -ms-overflow-style: none;
+        }
+
+        ol, li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel {
+            position: relative;
+            padding-top: 75%;
+            filter: drop-shadow(0 0 10px #0003);
+            perspective: 100px;
+        }
+
+        .carousel__viewport {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            overflow-x: scroll;
+            counter-reset: item;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel__slide {
+            position: relative;
+            background-size: cover;
+            flex: 0 0 100%;
+            width: 100%;
+            counter-increment: item;
+        }
+
+        .carousel__slide:nth-child(1) {
+            background-image: url("/static/skykum2018@gmail.com/20200413_161416.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(2) {
+            background-image: url("/static/skykum2018@gmail.com/20200413_161610.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(3) {
+            background-image: url("/static/skykum2018@gmail.com/20200413_161641.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(4) {
+            background-image: url("/static/skykum2018@gmail.com/20200413_161645.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(5) {
+            background-image: url("/static/skykum2018@gmail.com/20200413_162157.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(6) {
+            background-image: url("/static/skykum2018@gmail.com/20200413_163712.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(7) {
+            background-image: url("/static/skykum2018@gmail.com/20200413_165641.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(8) {
+            background-image: url("/static/skykum2018@gmail.com/20200413_170028.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(9) {
+            background-image: url("/static/skykum2018@gmail.com/20210218_212528.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(10) {
+            background-image: url("/static/skykum2018@gmail.com/20210218_212537.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(11) {
+            background-image: url("/static/skykum2018@gmail.com/20210218_212544.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:nth-child(12) {
+            background-image: url("/static/skykum2018@gmail.com/20210224_203506.jpg");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .carousel__slide:before {
+            content: counter(item);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -40%, 70px);
+            color: #fff;
+            font-size: 2em;
+        }
+
+        .carousel__snapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: center;
+        }
+
+        @media (hover: hover) {
+            .carousel__snapper {
+                animation-name: tonext, snap;
+                animation-timing-function: ease;
+                animation-duration: 4s;
+                animation-iteration-count: infinite;
+            }
+
+            .carousel__slide:last-child .carousel__snapper {
+                animation-name: tostart, snap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .carousel__snapper {
+                animation-name: none;
+            }
+        }
+
+        .carousel:hover .carousel__snapper,
+        .carousel:focus-within .carousel__snapper {
+            animation-name: none;
+        }
+
+        .carousel__navigation {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+        }
+
+        .carousel__navigation-list,
+        .carousel__navigation-item {
+            display: inline-block;
+        }
+
+        .carousel__navigation-button {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #333;
+            background-clip: content-box;
+            border: 0.25rem solid transparent;
+            border-radius: 50%;
+            font-size: 0;
+            transition: transform 0.1s;
+        }
+
+        .carousel::before,
+        .carousel::after,
+        .carousel__prev,
+        .carousel__next {
+            position: absolute;
+            top: 0;
+            margin-top: 37.5%;
+            width: 4rem;
+            height: 4rem;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            font-size: 0;
+            outline: 0;
+        }
+
+        .carousel::before,
+        .carousel__prev {
+            left: -1rem;
+        }
+
+        .carousel::after,
+        .carousel__next {
+            right: -1rem;
+        }
+
+        .carousel::before,
+        .carousel::after {
+            content: '';
+            z-index: 1;
+            background-color: #333;
+            background-size: 1.5rem 1.5rem;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #fff;
+            font-size: 2.5rem;
+            line-height: 4rem;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .carousel::before {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
+        .carousel::after {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
+        /*   새로운 슬라이더 */
+
     </style>
 
     <script>
         $(document).ready(function () {
-            $('.bxslider').bxSlider();
             familyinfo()
             getPhoto()
         });
@@ -525,7 +824,6 @@
         let random = Math.random().toString(36).substr(2, 11);
         let url = "naver.com/"
         let url_random = url + random;
-/*쓸모없는 주석(지워야 함)*/
 
         function copyToClipboard(val) {
             var t = document.createElement("textarea");
@@ -543,31 +841,32 @@
 
         function getPhoto() {
             $.ajax({
-                type: 'GET',
-                url: '/make_photo',
-                data: {},
-                success: function (response) {
-                    // response[Object.keys(response)[인덱스]]로 app.py에서 전달받은 photos와 id를 배열 형태로 확인 가능
-                    // photos는 인덱스 0번, id는 인덱스 1번에 저장되어 있음
-                    // console.log(response[Object.keys(response)[0]])
-                    /*
-                    * ["a_photo_present1.jpg","b_photo_family2.jpg","c_photo_1d3.jpg","d_photo_50d4.jpg","e_photo_100d5.jpg","f_photo_4mth6.jpg",
-                       "g_photo_5mth7.jpg","h_photo_6mth8.jpg","i_photo_7mth9.jpg","j_photo_8mth10.jpg","k_photo_9mth11.jpg","l_photo_10mth12.jpg",
-                       "m_photo_11mth13.jpg","n_photo_12mth14.jpg"]
-                    * */
-                    // console.log(response[Object.keys(response)[1]])
-                    /* 62492573e2082305c7a94b5c */
-                    photos = response[Object.keys(response)[0]] // app.py에서 json 형태로 전달받은 photos (파일 리스트)
-                    id = response[Object.keys(response)[1]] // app.py에서 json 형태로 전달받은 id값
-                    for (let i = 0; i < photos.length; i++) {
-                        slides = $('.bxslider')
-                        slide = `<li>
+                    type: 'GET',
+                    url: '/make_photo',
+                    data: {},
+                    success: function (response) {
+                        // response[Object.keys(response)[인덱스]]로 app.py에서 전달받은 photos와 id를 배열 형태로 확인 가능
+                        // photos는 인덱스 0번, id는 인덱스 1번에 저장되어 있음
+                        // console.log(response[Object.keys(response)[0]])
+                        /*
+                        * ["a_photo_present1.jpg","b_photo_family2.jpg","c_photo_1d3.jpg","d_photo_50d4.jpg","e_photo_100d5.jpg","f_photo_4mth6.jpg",
+                           "g_photo_5mth7.jpg","h_photo_6mth8.jpg","i_photo_7mth9.jpg","j_photo_8mth10.jpg","k_photo_9mth11.jpg","l_photo_10mth12.jpg",
+                           "m_photo_11mth13.jpg","n_photo_12mth14.jpg"]
+                        * */
+                        // console.log(response[Object.keys(response)[1]])
+                        /* 62492573e2082305c7a94b5c */
+                        photos = response[Object.keys(response)[0]] // app.py에서 json 형태로 전달받은 photos (파일 리스트)
+                        id = response[Object.keys(response)[1]] // app.py에서 json 형태로 전달받은 id값
+                        for (let i = 0; i < photos.length; i++) {
+                            slides = $('.bxslider')
+                            slide = `<li>
                                     <img style="height:100%" src="../static/${id}/${photos[i]}">
-                                  </li>`
-                        slides.append(slide)
+                                       </li>`
+                            slides.append(slide)
+                        }
                     }
                 }
-            })
+            )
         }
 
     </script>
@@ -590,7 +889,8 @@
                              height="853"
                              src="http://cdn.econovill.com/news/photo/201812/353683_236958_5647.jpg"
                              width="1280">
-                        <video autoplay="autoplay" class="intro-blend-video" data-v-4fe70a99="" id="intro-player" loop="loop"
+                        <video autoplay="autoplay" class="intro-blend-video" data-v-4fe70a99="" id="intro-player"
+                               loop="loop"
                                muted="muted" playsinline="" style="opacity: 1;">
                             <source data-v-4fe70a99="" src="https://mcard.fromtoday.co.kr/mcard/assets/flower_00.mp4">
                         </video>
@@ -631,13 +931,172 @@
                             <div class="m-title fade-in" style="opacity: 1; transform: translate(0px, 0px);">우리아기 성장일기
                             </div>
                             <div class="photo-wrap" data-v-9b6009a0="">
- <!--                                슬라이드쇼 넣는 곳 -->
-                                <div class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="">
-                                        <ul class="bxslider">
-
-                                        </ul>
-                                </div>
- <!--                                슬라이드쇼 넣는 곳 -->
+                                <!--                                슬라이드쇼 넣는 곳 -->
+                                <section aria-label="Gallery" class="carousel">
+                                    <ol class="carousel__viewport">
+                                        <li id="carousel__slide1" class="carousel__slide"
+                                            tabindex="0">아기아기아기
+                                            <div class="carousel__snapper">
+                                                <a class="carousel__prev"
+                                                   href="#carousel__slide12">Go to last slide</a>
+                                                <a class="carousel__next"
+                                                   href="#carousel__slide2">Go to next slide</a>
+                                            </div>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide2"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide1">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide3">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide3"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide2">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide4">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide4"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide3">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide5">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide5"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide4">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide6">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide6"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide5">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide7">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide7"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide6">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide8">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide8"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide7">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide9">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide9"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide8">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide10">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide10"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide9">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide11">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide11"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide10">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide12">Go to next slide</a>
+                                        </li>
+                                        <li class="carousel__slide"
+                                            id="carousel__slide12"
+                                            tabindex="0">
+                                            <div class="carousel__snapper"></div>
+                                            <a class="carousel__prev"
+                                               href="#carousel__slide11">Go to previous slide</a>
+                                            <a class="carousel__next"
+                                               href="#carousel__slide1">Go to first slide</a>
+                                        </li>
+                                    </ol>
+                                    <aside class="carousel__navigation">
+                                        <ol class="carousel__navigation-list">
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide1">Go to slide 1</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide2">Go to slide 2</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide3">Go to slide 3</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 4</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 5</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 6</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 7</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 8</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 9</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 10</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 11</a>
+                                            </li>
+                                            <li class="carousel__navigation-item">
+                                                <a class="carousel__navigation-button"
+                                                   href="#carousel__slide4">Go to slide 12</a>
+                                            </li>
+                                        </ol>
+                                    </aside>
+                                </section>
+                                <!--                                슬라이드쇼 넣는 곳 -->
 
                             </div>
                         </div>
