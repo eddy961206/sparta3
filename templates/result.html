@@ -546,8 +546,18 @@
                 url: '/make_photo',
                 data: {},
                 success: function(response) {
-                    photos = response[Object.keys(response)[0]]
-                    id= response[Object.keys(response)[1]]
+                    // response[Object.keys(response)[인덱스]]로 app.py에서 전달받은 photos와 id를 배열 형태로 확인 가능
+                    // photos는 인덱스 0번, id는 인덱스 1번에 저장되어 있음
+                    // console.log(response[Object.keys(response)[0]])
+                    /*
+                    * ["a_photo_present1.jpg","b_photo_family2.jpg","c_photo_1d3.jpg","d_photo_50d4.jpg","e_photo_100d5.jpg","f_photo_4mth6.jpg",
+                       "g_photo_5mth7.jpg","h_photo_6mth8.jpg","i_photo_7mth9.jpg","j_photo_8mth10.jpg","k_photo_9mth11.jpg","l_photo_10mth12.jpg",
+                       "m_photo_11mth13.jpg","n_photo_12mth14.jpg"]
+                    * */
+                   // console.log(response[Object.keys(response)[1]])
+                    /* 62492573e2082305c7a94b5c */
+                    photos = response[Object.keys(response)[0]] // app.py에서 json 형태로 전달받은 photos (파일 리스트)
+                    id= response[Object.keys(response)[1]] // app.py에서 json 형태로 전달받은 id값
                     for(let i = 0; i < photos.length; i++) {
                         slides = $('.intro-blend-wrap.photo.slider')
                         slide = `

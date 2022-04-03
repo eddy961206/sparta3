@@ -28,6 +28,7 @@ def result():
 
 @app.route("/make_photo", methods=['GET', 'POST'])
 def image_save():
+    # id값 받아오는 중복 부분 중복 제거
     newdata = list(db.contents.find({}))[-1]
     _id = newdata['_id']
     if request.method == 'POST':
@@ -77,9 +78,9 @@ def image_save():
         photo_12mth.save(newfolder + secure_filename(photo_12mth.filename))
         return 'uploads 디렉토리 -> 파일 업로드 성공!'
 
-    else:
-        photos = os.listdir('./static/' + str(_id) + '/')
-        return jsonify({'all_photos': photos, 'id': str(_id)})
+    else: # if request.method == 'GET':
+        photos = os.listdir('./static/' + str(_id) + '/') # static/id로 만든 폴더 안의 파일 리스트를 photos 변수에 저장
+        return jsonify({'all_photos': photos, 'id': str(_id)}) # photos 변수에 담긴 파일리스트와 id값을 함께 json 형태로 전달
 
 @app.route('/upload', methods=['POST'])
 def upload():
