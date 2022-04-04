@@ -21,21 +21,21 @@ def make():
     return render_template("make.html")
 
 
-@app.route('/result')
-def result():
-    return render_template("result.html")
+@app.route('/result/<id>')
+def result(id):
+    return render_template('result.html')
 
 
 @app.route("/make_photo", methods=['GET', 'POST'])
 def image_save():
     # id값 받아오는 중복 부분 중복 제거
-    newdata = list(db.contents.find({}))[-1]
-    _id = newdata['email']
+    # newdata = list(db.contents.find({}))[-1]
+    # _id = newdata['email']
+    _id = request.form['id']
     if request.method == 'POST':
-        current_path = './static/'
+        current_path = './static'
         if not os.path.isdir(current_path + "/" + str(_id)): os.makedirs(current_path + "/" + str(_id))
         newfolder = current_path + "/" + str(_id) + "/"
-
         photo_present = request.files['photopresent']
         photo_family = request.files['photofamily']
         photo_1d = request.files['photo1d']

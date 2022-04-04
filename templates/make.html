@@ -122,6 +122,9 @@
           }
         })
       }
+
+   #}
+
       function savebtn() {
           Swal.fire({
               icon: 'success',
@@ -130,9 +133,25 @@
               timer: 1500
           })
           setTimeout(function () {
-              location.href = '/result';
+              let id = $('#input-email').val()
+              location.href = `/result/${id}`;
           }, 1500);
       }
+
+      function sendEmail() {
+          $.ajax({
+              type: 'POST',
+              url: '/make_photo',
+              data: {
+                  id: id
+              },
+              success: function(response) {
+
+              }
+          })
+      }
+
+
     </script>
 </head>
 <body>
@@ -389,7 +408,7 @@
             <label class="input-group-text bg-primary bg-opacity-75">12개월</label>
             <input type="file" class="form-control" name="photo12mth">
           </div>
-           <button class="btn btn-primary savebtn" onclick="savebtn(),textsave()">
+           <button class="btn btn-primary savebtn" onclick="savebtn(),textsave(),sendEmail()">
             저장하기
           </button>
         </form>
