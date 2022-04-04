@@ -30,7 +30,7 @@ def result():
 def image_save():
     # id값 받아오는 중복 부분 중복 제거
     newdata = list(db.contents.find({}))[-1]
-    _id = newdata['_id']
+    _id = newdata['email']
     if request.method == 'POST':
         current_path = './static/'
         if not os.path.isdir(current_path + "/" + str(_id)): os.makedirs(current_path + "/" + str(_id))
@@ -63,7 +63,8 @@ def image_save():
         photo_9mth.save(newfolder + 'k_photo_9mth' + secure_filename(photo_9mth.filename))
         photo_10mth.save(newfolder + 'l_photo_10mth' + secure_filename(photo_10mth.filename))
         photo_11mth.save(newfolder + 'm_photo_11mth' + secure_filename(photo_11mth.filename))
-        photo_12mth.save(newfolder + 'n_photo_12mth' + secure_filename(photo_12mth.filename))      
+        photo_12mth.save(newfolder + 'n_photo_12mth' + secure_filename(photo_12mth.filename))
+
         return 'uploads 디렉토리 -> 파일 업로드 성공!'
 
     else: # if request.method == 'GET':
@@ -73,6 +74,7 @@ def image_save():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    email = request.form['email']
     babyname = request.form['baby_name']
     mothername = request.form['mother_name']
     fathername = request.form['father_name']
@@ -84,7 +86,7 @@ def upload():
 
     db.contents.insert_one(
         {'babyName': babyname, 'motherName': mothername, 'fatherName': fathername, 'birthYear': birthyear,
-         'birthMonth': birthmonth, 'birthDay': birthday,'birthHour':birthhour, 'birthMinute': birthminute })
+         'birthMonth': birthmonth, 'birthDay': birthday,'birthHour':birthhour, 'birthMinute': birthminute, 'email': email })
 
 
 @app.route('/info', methods=['GET'])
