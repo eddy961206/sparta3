@@ -15,7 +15,11 @@
     <script crossorigin="anonymous"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>♥우리 아기 사진첩</title>
 
     <meta content="우리 아기 사진첩" property="og:title">
@@ -480,11 +484,17 @@
             vertical-align: middle
         }
 
+        .slide {
+            width: 420px;
+            height: 280px;
+            object-fit: contain;
+
+        }
+
     </style>
 
     <script>
         $(document).ready(function () {
-            $('.bxslider').bxSlider();
             familyinfo()
             getPhoto()
         });
@@ -525,7 +535,8 @@
         let random = Math.random().toString(36).substr(2, 11);
         let url = "naver.com/"
         let url_random = url + random;
-/*쓸모없는 주석(지워야 함)*/
+
+        /*쓸모없는 주석(지워야 함)*/
 
         function copyToClipboard(val) {
             var t = document.createElement("textarea");
@@ -559,13 +570,47 @@
                     /* 62492573e2082305c7a94b5c */
                     photos = response[Object.keys(response)[0]] // app.py에서 json 형태로 전달받은 photos (파일 리스트)
                     id = response[Object.keys(response)[1]] // app.py에서 json 형태로 전달받은 id값
-                    for (let i = 0; i < photos.length; i++) {
-                        slides = $('.bxslider')
-                        slide = `<li>
-                                    <img style="height:100%" src="../static/${id}/${photos[i]}">
-                                  </li>`
-                        slides.append(slide)
-                    }
+                    let temp1 = `<img src="../static/${id}/${photos[2]}" class="d-block w-100 slide">`
+                    let temp2 = `<img src="../static/${id}/${photos[3]}" class="d-block w-100 slide">`
+                    let temp3 = `<img src="../static/${id}/${photos[4]}" class="d-block w-100 slide">`
+                    let temp4 = `<img src="../static/${id}/${photos[5]}" class="d-block w-100 slide">`
+                    let temp5 = `<img src="../static/${id}/${photos[6]}" class="d-block w-100 slide">`
+                    let temp6 = `<img src="../static/${id}/${photos[7]}" class="d-block w-100 slide">`
+                    let temp7 = `<img src="../static/${id}/${photos[8]}" class="d-block w-100 slide">`
+                    let temp8 = `<img src="../static/${id}/${photos[9]}" class="d-block w-100 slide">`
+                    let temp9 = `<img src="../static/${id}/${photos[10]}" class="d-block w-100 slide">`
+                    let temp10 = `<img src="../static/${id}/${photos[11]}" class="d-block w-100 slide">`
+                    let temp11 = `<img src="../static/${id}/${photos[12]}" class="d-block w-100 slide">`
+                    let temp12 = `<img src="../static/${id}/${photos[13]}" class="d-block w-100 slide">`
+                    let present = `  <img alt="현재 아기사진"
+                             class="intro-blend-image"
+                             data-v-4fe70a99=""
+                             height="853"
+                             src="../static/${id}/${photos[0]}"
+                             width="1280">
+                             <video autoplay="autoplay" class="intro-blend-video" data-v-4fe70a99="" id="intro-player" loop="loop"
+                               muted="muted" playsinline="" style="opacity: 1;">
+                            <source data-v-4fe70a99="" src="https://mcard.fromtoday.co.kr/mcard/assets/flower_00.mp4">
+                        </video>`
+                    let family = `  <img src="../static/${id}/${photos[1]}" alt="가족사진">`
+
+
+                    $('#Slide_1').append(temp1)
+                    $('#Slide_2').append(temp2)
+                    $('#Slide_3').append(temp3)
+                    $('#Slide_4').append(temp4)
+                    $('#Slide_5').append(temp5)
+                    $('#Slide_6').append(temp6)
+                    $('#Slide_7').append(temp7)
+                    $('#Slide_8').append(temp8)
+                    $('#Slide_9').append(temp9)
+                    $('#Slide_10').append(temp10)
+                    $('#Slide_11').append(temp11)
+                    $('#Slide_12').append(temp12)
+
+                    $('#present').append(present)
+                    $('#famliy').append(family)
+
                 }
             })
         }
@@ -583,14 +628,10 @@
 
                 </div>
                 <div class="photo-wrap" data-v-9b6009a0="">
-                    <div class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="">
-                        <img alt="현재 아기사진"
-                             class="intro-blend-image"
-                             data-v-4fe70a99=""
-                             height="853"
-                             src="http://cdn.econovill.com/news/photo/201812/353683_236958_5647.jpg"
-                             width="1280">
-                        <video autoplay="autoplay" class="intro-blend-video" data-v-4fe70a99="" id="intro-player" loop="loop"
+                    <div class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="" id="present">
+
+                        <video autoplay="autoplay" class="intro-blend-video" data-v-4fe70a99="" id="intro-player"
+                               loop="loop"
                                muted="muted" playsinline="" style="opacity: 1;">
                             <source data-v-4fe70a99="" src="https://mcard.fromtoday.co.kr/mcard/assets/flower_00.mp4">
                         </video>
@@ -613,11 +654,8 @@
                             </div>
                         </div>
 
-                        <div class="image fade-in" style="opacity: 1; transform: translate(0px, 0px);">
-                            <img
-                                    alt="가족사진"
-                                    src="http://cdn.econovill.com/news/photo/201812/353683_236958_5647.jpg"
-                            >
+                        <div class="image fade-in" id="famliy" style="opacity: 1; transform: translate(0px, 0px);">
+
                         </div>
 
                         <div class="members-wrap fade-in" style="opacity: 1; transform: translate(0px, 0px);">
@@ -631,14 +669,122 @@
                             <div class="m-title fade-in" style="opacity: 1; transform: translate(0px, 0px);">우리아기 성장일기
                             </div>
                             <div class="photo-wrap" data-v-9b6009a0="">
- <!--                                슬라이드쇼 넣는 곳 -->
-                                <div class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="">
-                                        <ul class="bxslider">
+                                <!--                                슬라이드쇼 넣는 곳 -->
+                                <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleCaptions">
+                                    <div class="carousel-indicators">
+                                        <button aria-current="true" aria-label="Slide 1"
+                                                class="active" data-bs-slide-to="0"
+                                                data-bs-target="#carouselExampleCaptions" type="button"></button>
+                                        <button aria-label="Slide 2" data-bs-slide-to="1"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 3" data-bs-slide-to="2"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 4" data-bs-slide-to="3"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 5" data-bs-slide-to="4"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 6" data-bs-slide-to="5"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 7" data-bs-slide-to="6"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 8" data-bs-slide-to="7"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 9" data-bs-slide-to="8"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 10" data-bs-slide-to="9"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 11" data-bs-slide-to="10"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                        <button aria-label="Slide 12" data-bs-slide-to="11"
+                                                data-bs-target="#carouselExampleCaptions"
+                                                type="button"></button>
+                                    </div>
 
-                                        </ul>
+                                    <div class="carousel-inner, Slide">
+                                        <div class="carousel-item active" id="Slide_1">
+
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>탄생일</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_2">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>50일</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_3">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>100일</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_4">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>4개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_5">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>5개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_6">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>6개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_7">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>7개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_8">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>8개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_9">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>9개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_10">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>10개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_11">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>11개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_12">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>12개월</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" data-bs-slide="prev"
+                                            data-bs-target="#carouselExampleCaptions" type="button">
+                                        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" data-bs-slide="next"
+                                            data-bs-target="#carouselExampleCaptions" type="button">
+                                        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
- <!--                                슬라이드쇼 넣는 곳 -->
-
+                                <!--                                슬라이드쇼 넣는 곳 -->
                             </div>
                         </div>
                     </div>
