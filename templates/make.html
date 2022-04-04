@@ -93,6 +93,7 @@
 
 
       function textsave() {
+          let email = $('#input-email').val()
         let babyname = $('#babyname').val()
         let mothername = $('#mothername').val()
         let fathername = $('#fathername').val()
@@ -107,6 +108,7 @@
           type: "POST",
           url: "/upload",
           data: {
+              email: email,
             baby_name: babyname,
             mother_name: mothername,
             father_name: fathername,
@@ -138,6 +140,10 @@
     <div class="wrap">
       <h1 style="color: #5cb9a6">우리 아이의 사진첩을 만들어보아요</h1>
       <div class="wrap2">
+        <div class="container">
+              <h5 style="font-weight: bold">이메일을 적어주세요</h5>
+              <input type="email" id="input-email" class="form-control form-control-lg" placeholder="email@sample.com">
+        </div>
         <div class="family-info container">
           <h5 style="font-weight: bold">이름을 적어주세요</h5>
           <div class="input-group mb-3">
@@ -323,10 +329,11 @@
         </div>
         <h5 style="font-weight: bold">사진을 넣어주세요</h5>
         <div class="baby-img"></div>
-<!--/*쓸모없는 주석(지워야 함)*/-->
 
 
         <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
+
+
         <form action="/make_photo" method="post" enctype="multipart/form-data" target="iframe1">
           <div class="input-group mb-3">
               <label class="input-group-text bg-warning bg-opacity-50">현재사진</label>
