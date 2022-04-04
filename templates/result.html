@@ -565,18 +565,26 @@
                     /* 62492573e2082305c7a94b5c */
                     photos = response[Object.keys(response)[0]] // app.py에서 json 형태로 전달받은 photos (파일 리스트)
                     id = response[Object.keys(response)[1]] // app.py에서 json 형태로 전달받은 id값
-                    let temp1 = `<img src="../static/${id}/${photos[2]}" class="d-block w-100 slide" alt="...">`
-                    let temp2 = `<img src="../static/${id}/${photos[3]}" class="d-block w-100 slide" alt="...">`
-                    let temp3 = `<img src="../static/${id}/${photos[4]}" class="d-block w-100 slide" alt="...">`
-                    let temp4 = `<img src="../static/${id}/${photos[5]}" class="d-block w-100 slide" alt="...">`
-                    let temp5 = `<img src="../static/${id}/${photos[6]}" class="d-block w-100 slide" alt="...">`
-                    let temp6 = `<img src="../static/${id}/${photos[7]}" class="d-block w-100 slide" alt="...">`
-                    let temp7 = `<img src="../static/${id}/${photos[8]}" class="d-block w-100 slide" alt="...">`
-                    let temp8 = `<img src="../static/${id}/${photos[9]}" class="d-block w-100 slide" alt="...">`
-                    let temp9 = `<img src="../static/${id}/${photos[10]}" class="d-block w-100 slide" alt="...">`
-                    let temp10 = `<img src="../static/${id}/${photos[11]}" class="d-block w-100 slide" alt="...">`
-                    let temp11 = `<img src="../static/${id}/${photos[12]}" class="d-block w-100 slide" alt="...">`
-                    let temp12 = `<img src="../static/${id}/${photos[13]}" class="d-block w-100 slide" alt="...">`
+                    let temp1 = `<img src="../static/${id}/${photos[2]}" class="d-block w-100 slide">`
+                    let temp2 = `<img src="../static/${id}/${photos[3]}" class="d-block w-100 slide">`
+                    let temp3 = `<img src="../static/${id}/${photos[4]}" class="d-block w-100 slide">`
+                    let temp4 = `<img src="../static/${id}/${photos[5]}" class="d-block w-100 slide">`
+                    let temp5 = `<img src="../static/${id}/${photos[6]}" class="d-block w-100 slide">`
+                    let temp6 = `<img src="../static/${id}/${photos[7]}" class="d-block w-100 slide">`
+                    let temp7 = `<img src="../static/${id}/${photos[8]}" class="d-block w-100 slide">`
+                    let temp8 = `<img src="../static/${id}/${photos[9]}" class="d-block w-100 slide">`
+                    let temp9 = `<img src="../static/${id}/${photos[10]}" class="d-block w-100 slide">`
+                    let temp10 = `<img src="../static/${id}/${photos[11]}" class="d-block w-100 slide">`
+                    let temp11 = `<img src="../static/${id}/${photos[12]}" class="d-block w-100 slide">`
+                    let temp12 = `<img src="../static/${id}/${photos[13]}" class="d-block w-100 slide">`
+                    let present = `  <img alt="현재 아기사진"
+                             class="intro-blend-image"
+                             data-v-4fe70a99=""
+                             height="853"
+                             src="../static/${id}/${photos[0]}"
+                             width="1280">`
+                    let family= `  <img src="../static/${id}/${photos[1]}" alt="가족사진">`
+
 
                     $('#Slide_1').append(temp1)
                     $('#Slide_2').append(temp2)
@@ -590,6 +598,10 @@
                     $('#Slide_10').append(temp10)
                     $('#Slide_11').append(temp11)
                     $('#Slide_12').append(temp12)
+
+                    $('#present').append(present)
+                    $('#famliy').append(family)
+
                 }
             })
         }
@@ -607,13 +619,8 @@
 
                 </div>
                 <div class="photo-wrap" data-v-9b6009a0="">
-                    <div class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="">
-                        <img alt="현재 아기사진"
-                             class="intro-blend-image"
-                             data-v-4fe70a99=""
-                             height="853"
-                             src="http://cdn.econovill.com/news/photo/201812/353683_236958_5647.jpg"
-                             width="1280">
+                    <div id="present" class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="">
+
                         <video autoplay="autoplay" class="intro-blend-video" data-v-4fe70a99="" id="intro-player" loop="loop"
                                muted="muted" playsinline="" style="opacity: 1;">
                             <source data-v-4fe70a99="" src="https://mcard.fromtoday.co.kr/mcard/assets/flower_00.mp4">
@@ -637,11 +644,8 @@
                             </div>
                         </div>
 
-                        <div class="image fade-in" style="opacity: 1; transform: translate(0px, 0px);">
-                            <img
-                                    alt="가족사진"
-                                    src="http://cdn.econovill.com/news/photo/201812/353683_236958_5647.jpg"
-                            >
+                        <div id="famliy" class="image fade-in" style="opacity: 1; transform: translate(0px, 0px);">
+
                         </div>
 
                         <div class="members-wrap fade-in" style="opacity: 1; transform: translate(0px, 0px);">
@@ -771,9 +775,6 @@
                                     </button>
                                 </div>
  <!--                                슬라이드쇼 넣는 곳 -->
-
-
-
                             </div>
                         </div>
                     </div>
