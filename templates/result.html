@@ -577,12 +577,11 @@
                     let temp10 = `<img src="../static/${id}/${photos[11]}" class="d-block w-100 slide">`
                     let temp11 = `<img src="../static/${id}/${photos[12]}" class="d-block w-100 slide">`
                     let temp12 = `<img src="../static/${id}/${photos[13]}" class="d-block w-100 slide">`
-                    let present = `  <img alt="현재 아기사진"
-                             class="intro-blend-image"
-                             data-v-4fe70a99=""
-                             height="853"
-                             src="../static/${id}/${photos[0]}"
-                             width="1280">`
+                    let present = `<img alt="현재 아기사진" class="intro-blend-image" data-v-4fe70a99="" height="853" src="../static/${id}/${photos[0]}" width="1280">
+                                   <video autoplay="autoplay" class="intro-blend-video" data-v-4fe70a99="" id="intro-player" loop="loop"
+                               muted="muted" playsinline="" style="opacity: 1;">
+                            <source data-v-4fe70a99="" src="https://mcard.fromtoday.co.kr/mcard/assets/flower_00.mp4">
+                        </video>`
                     let family= `  <img src="../static/${id}/${photos[1]}" alt="가족사진">`
 
 
@@ -621,10 +620,7 @@
                 <div class="photo-wrap" data-v-9b6009a0="">
                     <div id="present" class="intro-blend-wrap photo" data-v-4fe70a99="" data-v-9b6009a0="">
 
-                        <video autoplay="autoplay" class="intro-blend-video" data-v-4fe70a99="" id="intro-player" loop="loop"
-                               muted="muted" playsinline="" style="opacity: 1;">
-                            <source data-v-4fe70a99="" src="https://mcard.fromtoday.co.kr/mcard/assets/flower_00.mp4">
-                        </video>
+
                     </div>
                 </div>
                 <div>
