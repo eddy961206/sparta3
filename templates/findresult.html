@@ -533,10 +533,11 @@
         }
 
         function getPhoto() {
+            let email = location.href.split('/')[4]
             $.ajax({
                 type: 'GET',
                 url: '/find_photo',
-                data: {},
+                data: {'femail': email},
                 success: function (response) {
                     // response[Object.keys(response)[인덱스]]로 app.py에서 전달받은 photos와 id를 배열 형태로 확인 가능
                     // photos는 인덱스 0번, id는 인덱스 1번에 저장되어 있음

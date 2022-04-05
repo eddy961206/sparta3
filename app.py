@@ -132,7 +132,8 @@ def read_info():
 
 @app.route('/find_photo', methods=['GET'])
 def find_photo():
-    findinfo = list(db.findEmail.find({}, {'_id': False}))[-1]
+    femail = request.values['femail']
+    findinfo = list(db.findEmail.find({'femail': femail}, {'_id': False}))[-1]
     print(findinfo)
     _id = findinfo['femail']
     print(id)
