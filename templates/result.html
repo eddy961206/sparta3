@@ -502,7 +502,7 @@
         function familyinfo() {
             $.ajax({
                 type: "GET",
-                url: "/info",
+                url: "/find_info",
                 data: {},
                 success: function (response) {
                     let all_info = response ['all_info']
@@ -532,30 +532,10 @@
             })
         }
 
-        let random = Math.random().toString(36).substr(2, 11);
-        let url = "naver.com/"
-        let url_random = url + random;
-
-        /*쓸모없는 주석(지워야 함)*/
-
-        function copyToClipboard(val) {
-            var t = document.createElement("textarea");
-            document.body.appendChild(t);
-            t.value = val;
-            t.select();
-            document.execCommand('copy');
-            document.body.removeChild(t);
-        }
-
-        $('#copybtn').click(function () {
-            copyToClipboard(url_random);
-            alert("주소를 복사하였습니다");
-        });
-
         function getPhoto() {
             $.ajax({
                 type: 'GET',
-                url: '/make_photo',
+                url: '/find_photo',
                 data: {},
                 success: function (response) {
                     // response[Object.keys(response)[인덱스]]로 app.py에서 전달받은 photos와 id를 배열 형태로 확인 가능
@@ -614,22 +594,6 @@
                 }
             })
         }
-
-        //링크 복사하기
-        function copyToClipboard(val) {
-            var t = document.createElement("textarea");
-            document.body.appendChild(t);
-            t.value = val;
-            t.select();
-            document.execCommand('copy');
-            document.body.removeChild(t);
-        }
-
-        $('#copybtn').click(function () {
-            copyToClipboard(window.document.location.href);
-            alert("주소를 복사하였습니다");
-        });
-
 
     </script>
 </head>
@@ -805,15 +769,15 @@
                         </div>
                     </div>
                     <div class="footer-wrap">
-                        <div class="kakao-wrap" id="copybtn"
-                             onclick="copyToClipboard(window.document.location.href);">
+                        <div class="kakao-wrap">
                             <div class="btn-kakao">
                                 <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path clip-rule="evenodd"
                                           d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
                                           fill-rule="evenodd"></path>
                                 </svg>
-                                <span style="display: inline-block; width: 8.2rem; margin-left: 6px;">사진첩 링크 복사하기</span>
+                                <span id="copybtn" onclick="copyToClipboard('https://www.naver.com')"
+                                      style="display: inline-block; width: 8.2rem; margin-left: 6px;">사진첩 링크 복사하기</span>
                                 <br>완성된 사진첩을 공유해보세요!
                             </div>
                         </div>
