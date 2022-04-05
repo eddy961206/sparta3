@@ -97,7 +97,6 @@
         let babyname = $('#babyname').val()
         let mothername = $('#mothername').val()
         let fathername = $('#fathername').val()
-
         let birthyear = $('#birthyear').val()
         let birthmonth = $('#birthmonth').val()
         let birthday = $('#birthday').val()
@@ -123,9 +122,10 @@
         })
       }
 
-   #}
+
 
       function savebtn() {
+          let id = $('#input-email').val()
           Swal.fire({
               icon: 'success',
               title: '저장이 완료되었습니다.',
@@ -133,17 +133,17 @@
               timer: 1500
           })
           setTimeout(function () {
-              let id = $('#input-email').val()
-              location.href = `/result/${id}`;
+              location.href = `/result/${id}`
           }, 1500);
       }
 
       function sendEmail() {
+          let email = $('#input-email').val()
           $.ajax({
               type: 'POST',
               url: '/make_photo',
               data: {
-                  id: id
+                  email: email
               },
               success: function(response) {
 

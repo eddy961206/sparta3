@@ -487,7 +487,6 @@
             $('.slider').bxSlider();
             familyinfo()
             getPhoto()
-            sendEmail()
         });
 
         function familyinfo() {
@@ -543,19 +542,7 @@
             copyToClipboard(url_random);
             alert("주소를 복사하였습니다");
         });
-        function sendEmail() {
-            let id = window.location.pathname.split('result/')[1]
-            $.ajax({
-                type: 'POST',
-                url: 'make_photo',
-                data: {
-                    id: id
-                },
-                success: {
 
-                }
-            })
-        }
         function getPhoto() {
             $.ajax({
                 type: 'GET',

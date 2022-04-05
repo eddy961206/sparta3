@@ -1,5 +1,7 @@
 import os
-
+import requests
+import urllib.parse
+from urllib.parse import urlparse
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 
@@ -28,15 +30,17 @@ def result(id):
 
 @app.route("/make_photo", methods=['GET', 'POST'])
 def image_save():
-    # id값 받아오는 중복 부분 중복 제거
-    # newdata = list(db.contents.find({}))[-1]
-    # _id = newdata['email']
-    _id = request.form['id']
     if request.method == 'POST':
+        receivedemail = request.values.get('email')
+        print(receivedemail)
+        newdata = list(db.contents.find({'userEmail': receivedemail}))[-1]
+        print(newdata)
+        _id = newdata['email']
         current_path = './static'
         if not os.path.isdir(current_path + "/" + str(_id)): os.makedirs(current_path + "/" + str(_id))
         newfolder = current_path + "/" + str(_id) + "/"
         photo_present = request.files['photopresent']
+        print(photo_present)
         photo_family = request.files['photofamily']
         photo_1d = request.files['photo1d']
         photo_50d = request.files['photo50d']
@@ -79,6 +83,12 @@ def image_save():
         return 'uploads 디렉토리 -> 파일 업로드 성공!'
 
     else: # if request.method == 'GET':
+        receivedemail = request.values.get('email')
+        print(receivedemail)
+        newdata = list(db.contents.find({'userEmail': receivedemail}))[-1]
+        print(newdata)
+        _id = newdata['email']
+        print('get id' + _id)
         photos = os.listdir('./static/' + str(_id) + '/') # static/id로 만든 폴더 안의 파일 리스트를 photos 변수에 저장
         return jsonify({'all_photos': photos, 'id': str(_id)}) # photos 변수에 담긴 파일리스트와 id값을 함께 json 형태로 전달
 
@@ -96,7 +106,8 @@ def upload():
 
     db.contents.insert_one(
         {'babyName': babyname, 'motherName': mothername, 'fatherName': fathername, 'birthYear': birthyear,
-         'birthMonth': birthmonth, 'birthDay': birthday,'birthHour':birthhour, 'birthMinute': birthminute, 'email': email })
+         'birthMonth': birthmonth, 'birthDay': birthday, 'birthHour': birthhour, 'birthMinute': birthminute,
+         'email': email})
 
 
 @app.route('/info', methods=['GET'])
@@ -104,6 +115,8 @@ def read_info():
     info = list(db.contents.find({}, {'_id': False}))
     return jsonify({'all_info': info})
 
+# @app.route('/get_photo', methods=['GET'])
+# def view_photo():
 
 
 if __name__ == '__main__':
