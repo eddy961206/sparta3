@@ -502,7 +502,7 @@
         function familyinfo() {
             $.ajax({
                 type: "GET",
-                url: "/info",
+                url: "/find_info",
                 data: {},
                 success: function (response) {
                     let all_info = response ['all_info']
@@ -535,7 +535,7 @@
         function getPhoto() {
             $.ajax({
                 type: 'GET',
-                url: '/make_photo',
+                url: '/find_photo',
                 data: {},
                 success: function (response) {
                     // response[Object.keys(response)[인덱스]]로 app.py에서 전달받은 photos와 id를 배열 형태로 확인 가능

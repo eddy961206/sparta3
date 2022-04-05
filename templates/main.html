@@ -18,10 +18,34 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script crossorigin="anonymous"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+    </script>
+
+    <script>
+
+        function findemail() {
+            let femail = $('#find-email').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/findemail",
+                data: {
+                    femail: femail
+                },
+                success: function (response) {
+                    alert(response["msg"]);
+                }
+            })
+        }
+
+        function loadresult() {
+            let femail = $('#find-email').val()
+
+            return location.href = `/findresult/${femail}`
+        }
+    </script>
 
     <title>아기사진첩</title>
-
 
     <meta content="우리 아기 사진첩" property="og:title">
     <meta content="아이 돌 사진첩" property="og:site_name">
@@ -37,6 +61,14 @@
     <style>
         * {
             font-family: 'Jua', sans-serif;
+        }
+
+        .backcolor {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .backcolor::after {
@@ -58,6 +90,7 @@
             background-color: #f4eae5;
             border: 3px solid #eeb8ba;
         }
+
 
         .jumbotron {
             background-color: #eeb8ba;
@@ -83,29 +116,29 @@
 </head>
 
 <body>
-    <div class="backcolor">
-        <div class="wrap">
-            <div class="jumbotron reduced-jumbotron">
-                <h1 class="display-4">아기사진첩</h1>
-                <p class="lead">소중한 아기의 사진을 모아서 공유해 보세요!</p>
-            </div>
-            <div class="card-boxes">
-                <div class="card right" style="width: 30vw;">
-                    <img alt="Card image cap"
-                         class="card-img-top"
-                         src="/static/result_example.png">
-                    <div class="card-body">
-                        <h5 class="card-title">동행</h5>
+<div class="backcolor">
+    <div class="wrap">
+        <div class="jumbotron reduced-jumbotron">
+            <h1 class="display-4">아기사진첩</h1>
+            <p class="lead">소중한 아기의 사진을 모아서 공유해 보세요!</p>
+        </div>
+        <div class="card-boxes">
+            <div class="card right" style="width: 30vw;">
+                <img alt="Card image cap"
+                     class="card-img-top"
+                     src="/static/result_example.png">
+                <div class="card-body button" style="text-align: center; size: 40px;">
+                    <button class="btn btn-success card-link" type="button" onclick="location.href='/make'" style="font-size: 25px; margin-bottom: 50px; margin-top: 20px">제작하기</button>
+                    <br>
+                    <div>
+                        <input type="email" id="find-email" class="form-control form-control-lg" placeholder="이메일을 입력해주세요" style="margin-bottom: 15px">
                     </div>
-                    <div class="card-body button">
-                        <a class="card-link" href="#">예시</a>
-                        <a class="card-link" href="/make">제작하기</a>
-                    </div>
+                    <button class="btn btn-success card-link" type="button" onclick="loadresult(), findemail()" style="font-size: 25px">불러오기</button>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 </body>
 
 </html>
