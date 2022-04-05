@@ -26,6 +26,18 @@ def result():
     return render_template("result.html")
 
 
+@app.route('/findresult')
+def findresult():
+    return render_template('findresult.html')
+
+
+@app.route('/findemail', methods=['POST'])
+def findemail():
+    femail = request.form['femail']
+    db.findEmail.insert_one({'femail': femail})
+
+
+
 @app.route("/make_photo", methods=['GET', 'POST'])
 def image_save():
     # id값 받아오는 중복 부분 중복 제거
@@ -93,6 +105,29 @@ def upload():
 def read_info():
     info = list(db.contents.find({}, {'_id': False}))
     return jsonify({'all_info': info})
+
+
+
+@app.route('/find_photo', methods=['GET'])
+def find_photo():
+    findinfo = list(db.findEmail.find({}, {'_id': False}))[-1]
+    print(findinfo)
+    _id = findinfo['femail']
+    print(id)
+    photos = os.listdir('./static/' + str(_id) + '/')
+    print(photos)
+    return jsonify({'all_photos': photos, 'id': str(_id)})
+
+
+
+@app.route('/find_info', methods=['GET'])
+def find_info():
+    findinfo = list(db.findEmail.find({}, {'_id': False}))[-1]
+    print(findinfo)
+    _id = findinfo['femail']
+    newdata = list(db.contents.find({'email': _id}, {'_id': False}))
+    print(newdata)
+    return jsonify({'all_info': newdata})
 
 
 
