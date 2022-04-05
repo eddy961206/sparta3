@@ -18,7 +18,28 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script crossorigin="anonymous"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+    </script>
+
+    <script>
+
+        function findemail() {
+            let femail = $('#find-email').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/findemail",
+                data: {
+                    femail: femail
+                },
+                success: function (response) {
+                    alert(response["msg"]);
+                }
+            })
+        }
+
+
+    </script>
 
     <title>아기사진첩</title>
 
@@ -102,8 +123,13 @@
                 <img alt="Card image cap"
                      class="card-img-top"
                      src="/static/result_example.png">
-                <div class="card-body button" style="text-align: center; size: 40px">
-                    <button class="btn btn-success card-link" type="button" onclick="location.href='/make'" style="font-size: 25px">제작하기</button>
+                <div class="card-body button" style="text-align: center; size: 40px;">
+                    <button class="btn btn-success card-link" type="button" onclick="location.href='/make'" style="font-size: 25px; margin-bottom: 50px; margin-top: 20px">제작하기</button>
+                    <br>
+                    <div>
+                        <input type="email" id="find-email" class="form-control form-control-lg" placeholder="이메일을 입력해주세요" style="margin-bottom: 15px">
+                    </div>
+                    <button class="btn btn-success card-link" type="button" onclick="location.href='/findresult', findemail()" style="font-size: 25px">불러오기</button>
                 </div>
             </div>
         </div>
