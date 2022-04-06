@@ -29,7 +29,7 @@
     <!--        <meta property="og:image"-->
     <!--              content="https://s3.ap-northeast-2.amazonaws.com/mcard.fromtoday.co.kr/w/IHukz8/photos/IHukz8_mcard_2022-03-25_00a4ce7df0d94c55befb43d4a4168108_w800.jpg">-->
     <meta content="website" property="og:type">
- 
+
     <link href="https://fonts.googleapis.com/css?family=Castoro" media="all" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -690,37 +690,116 @@
                                                 type="button"></button>
                                     </div>
 
-                                    <div class="footer-wrap" id="copybtn"
-                     onclick="copyToClipboard(current_url);" title="주소 복사">
+                                    <div class="carousel-inner, Slide">
+                                        <div class="carousel-item active" id="Slide_1">
 
-                    <script>
-                        let current_url = window.document.location.href
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>탄생일</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_2">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>50일</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_3">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>100일</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_4">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>4개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_5">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>5개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_6">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>6개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_7">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>7개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_8">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>8개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_9">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>9개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_10">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>10개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_11">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>11개월</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item" id="Slide_12">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>12개월</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" data-bs-slide="prev"
+                                            data-bs-target="#carouselExampleCaptions" type="button">
+                                        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" data-bs-slide="next"
+                                            data-bs-target="#carouselExampleCaptions" type="button">
+                                        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <!--                                슬라이드쇼 넣는 곳 -->
+                            </div>
+                        </div>
+                    </div>
 
-                        function copyToClipboard(val) {
-                            var t = document.createElement("textarea");
-                            document.body.appendChild(t);
-                            t.value = val;
-                            t.select();
-                            document.execCommand('copy');
-                            document.body.removeChild(t);
-                        }
+                    <div class="footer-wrap" id="copybtn"
+                         onclick="copyToClipboard(current_url);" title="주소 복사">
 
-                        $('#copybtn').click(function () {
-                            copyToClipboard(current_url);
-                            alert("주소를 복사하였습니다");
-                            window.location.reload();
-                        });
-                    </script>
-                                        
+                        <script>
+                            let current_url = window.document.location.href
+
+                            function copyToClipboard(val) {
+                                var t = document.createElement("textarea");
+                                document.body.appendChild(t);
+                                t.value = val;
+                                t.select();
+                                document.execCommand('copy');
+                                document.body.removeChild(t);
+                            }
+
+                            $('#copybtn').click(function () {
+                                copyToClipboard(current_url);
+                                alert("주소를 복사하였습니다");
+                                window.location.reload();
+                            });
+                        </script>
+
                         <div class="kakao-wrap">
                             <div class="btn-kakao">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
+                                <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd"
                                           d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                                          clip-rule="evenodd"></path>
+                                          fill-rule="evenodd"></path>
                                 </svg>
-                                <span style="display: inline-block; width: 8.2rem; margin-left: 6px;" id="copybtn"
-                                      onclick="copyToClipboard('https://www.naver.com')">사진첩 링크 복사하기</span>
+                                <span id="copybtn" onclick="copyToClipboard('https://www.naver.com')"
+                                      style="display: inline-block; width: 8.2rem; margin-left: 6px;">사진첩 링크 복사하기</span>
                                 <br>완성된 사진첩을 공유해보세요!
                             </div>
                         </div>
@@ -733,4 +812,3 @@
 
 </body>
 </html>
-
